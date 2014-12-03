@@ -6,6 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# seed Colourways
+# although these are production-level so should be in a Rake task.
+Colourway.destroy_all
+
+Colourway.create([{
+	name: "Fire"
+	},{
+	name: "Warning"
+	},{
+	name: "Ice"
+	},{
+	name: "Nature"
+	}])
+
+
+
+
 # seed Poets
 Poet.destroy_all
 
@@ -30,9 +48,11 @@ Poem.destroy_all
 Poem.create([{
   title: "",
   body: "Left foot forward",
-  poet_id: 0
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway_id: Colourway.where(name: "Fire")[0].id
 	},{
   title: "On the importance of wednesday dreams",
   body: "Imagination's purple reign",
-  poet_id: 1
+  poet_id: Poet.where(first_name: "Simon")[0].id,
+  colourway_id: Colourway.where(name: "Nature")[0].id
 	}])
