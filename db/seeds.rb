@@ -51,8 +51,9 @@ Poem.create([{
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway_id: Colourway.where(name: "Fire")[0].id
 	},{
-  title: "On the importance of wednesday dreams",
-  body: "Imagination's purple reign",
+  title: "On the importance of dreaming wednesdays",
+  body: "Imagination's misty reign",
   poet_id: Poet.where(first_name: "Simon")[0].id,
   colourway_id: Colourway.where(name: "Nature")[0].id
+  top_ten: true
 	}])
