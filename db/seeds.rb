@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# seed Poets
 Poet.destroy_all
 
 Poet.create!([{
@@ -18,4 +20,19 @@ Poet.create!([{
 	email: "simon@theotherdell.com",
 	first_name: "Simon",
 	last_name: "Dell"
+	}])
+
+
+
+# seed Poems
+Poem.destroy_all
+
+Poem.create([{
+  title: "",
+  body: "Left foot forward",
+  poet_id: 0
+	},{
+  title: "On the importance of wednesday dreams",
+  body: "Imagination's purple reign",
+  poet_id: 1
 	}])
