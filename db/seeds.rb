@@ -11,10 +11,10 @@
 # although these are production-level so should be in a Rake task.
 Colourway.destroy_all
 
-fire = Colourway.create!( [{name: "Fire"}] )
-warning = Colourway.create!( [{name: "Warning"}] )
-ice = Colourway.create!( [{name: "Ice"}] )
-nature = Colourway.create!( [{name: "Nature"}] )
+fire = Colourway.create!( {name: "Fire"} )
+warning = Colourway.create!( {name: "Warning"} )
+ice = Colourway.create!( {name: "Ice"} )
+nature = Colourway.create!( {name: "Nature"} )
 
 
 Category.destroy_all
@@ -47,12 +47,12 @@ Poem.create([{
   title: "",
   body: "Left foot forward",
   poet_id: Poet.where(first_name: "Anon")[0].id,
-  colourway_id: fire,
+  colourway: fire,
   categories: [ten, aphorism]
 	},{
   title: "On the importance of dreaming wednesdays",
   body: "Imagination's misty reign",
   poet_id: Poet.where(first_name: "Simon")[0].id,
-  colourway_id: nature,
+  colourway: nature,
   categories: [ten, mythic]
 	}])
