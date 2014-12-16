@@ -1,0 +1,15 @@
+      <tr class="<%= poem.colourway.name.downcase if poem.colourway.present? %>">
+        <td><%= poem.title %></td>
+        <td><%= poem.body %></td>
+        <td><%= poem.poet_id %></td>
+        <td>
+          <% poem.categories.each_with_index do |cat, index| %>
+            <%= link_to cat.name, poems_path(categorise_by: cat.name) %>
+            <!-- <%= ', ' unless index === poem.categories.count - 1 %> -->
+          <% end %>
+
+        </td>
+        <td><%= link_to 'Show', poem %></td>
+        <td><%= link_to 'Edit', edit_poem_path(poem) %></td>
+        <td><%= link_to 'Destroy', poem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
