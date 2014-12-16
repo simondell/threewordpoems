@@ -11,23 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215095727) do
+ActiveRecord::Schema.define(version: 20141216103536) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "categorisations", force: true do |t|
-    t.integer  "poem_id"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "categorisations", ["category_id"], name: "index_categorisations_on_category_id"
-  add_index "categorisations", ["poem_id"], name: "index_categorisations_on_poem_id"
 
   create_table "colourways", force: true do |t|
     t.string   "name"
@@ -53,7 +43,6 @@ ActiveRecord::Schema.define(version: 20141215095727) do
     t.datetime "updated_at"
     t.integer  "image_id"
     t.integer  "colourway_id"
-    t.boolean  "top_ten"
   end
 
   create_table "poets", force: true do |t|

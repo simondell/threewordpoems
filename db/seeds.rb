@@ -54,6 +54,5 @@ Poem.create([{
   body: "Imagination's misty reign",
   poet_id: Poet.where(first_name: "Simon")[0].id,
   colourway_id: nature,
-  top_ten: true,
   categories: [ten, mythic]
 	}])
