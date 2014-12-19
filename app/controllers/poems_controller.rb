@@ -5,6 +5,7 @@ class PoemsController < ApplicationController
   # GET /poems.json
   def index
     @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
+    @poets = Poet.all
   end
 
   # GET /poems/1
@@ -30,6 +31,7 @@ class PoemsController < ApplicationController
       if @poem.save
         format.html { redirect_to @poem, notice: 'Poem was successfully created.' }
         format.json { render :show, status: :created, location: @poem }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @poem.errors, status: :unprocessable_entity }
@@ -69,6 +71,6 @@ class PoemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poem_params
-      params.require(:poem).permit(:title, :body, :poet_id)
+      params.require(:poem).permit( :title, :body, :poet_id )
     end
 end
