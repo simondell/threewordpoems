@@ -33,6 +33,10 @@
     <%= f.label :poet_id %><br>
     <%= f.select :poet_id, @poets.map {|poet| [poet.display_name, poet.id]}, {}, {multiple: false} %>
   </div>
+  <div class="field">
+    <%= f.label :category_ids %><br>
+    <%= f.select :category_ids, @categories.map {|cat| [cat.name, cat.id]}, {}, {multiple: true} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

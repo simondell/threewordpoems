@@ -6,6 +6,7 @@ class PoemsController < ApplicationController
   def index
     @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
     @poets = Poet.all
+    @categories = Category.all
   end
 
   # GET /poems/1
@@ -71,6 +72,6 @@ class PoemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poem_params
-      params.require(:poem).permit( :title, :body, :poet_id )
+      params.require(:poem).permit( :title, :body, :poet_id, {category_ids: []} )
     end
 end
