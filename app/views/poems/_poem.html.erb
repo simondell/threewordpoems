@@ -1,7 +1,7 @@
       <tr class="<%= poem.colourway.name.downcase if poem.colourway.present? %>">
         <td><%= poem.title %></td>
         <td><%= poem.body %></td>
-        <td><%= poem.poet_id %></td>
+        <td><%= poem.poet.display_name %></td>
         <td>
           <% poem.categories.each_with_index do |cat, index| %>
             <%= link_to cat.name, poems_path(categorise_by: cat.name) %>
