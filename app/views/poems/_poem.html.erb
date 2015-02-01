@@ -1,6 +1,6 @@
       <tr class="<%= poem.colourway.name.downcase if poem.colourway.present? %>">
         <td><%= poem.title %></td>
-        <td><%= poem.body %></td>
+        <td><%= poem.image.present? ? image_tag( poem.image_url ) : poem.body %></td>
         <td><%= poem.poet.display_name %></td>
         <td>
           <% poem.categories.each_with_index do |cat, index| %>

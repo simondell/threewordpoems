@@ -72,6 +72,6 @@ class PoemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poem_params
-      params.require(:poem).permit( :title, :body, :poet_id, {category_ids: []} )
+      params.require(:poem).permit( :title, :body, :poet_id, {category_ids: []}, :image )
     end
 end

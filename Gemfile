@@ -38,3 +38,10 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# use RMagick for image processing
+# - requires imagemagick be installed on the host system.
+# That's easy in dev, but how do you do it on test & production?
+gem 'rmagick'
+
+# use CarrierWave for file uploads
+gem 'carrierwave'
