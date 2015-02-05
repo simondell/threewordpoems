@@ -1,21 +1,26 @@
+$verticals: 30px;
+
+html {
+	height: 100%;
+	font-size: $verticals / 1.2;	// 25 x 1.2 = 30px line-height, vertical riddim
+	line-height: 1.2;
+}
+
 body {
-  background-color: #fff;
+	position: relative;
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: helvetica, sans-serif;
+  background-color: #fff;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+nav {
+	position: absolute;
+	top: 24px;
+	right: 0;
+	text-align: right;
 }
 
 a {

@@ -2,12 +2,25 @@
 <html>
 <head>
   <title>Threewordpoems</title>
+	<meta name="viewport" content="width: 960px" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
+	<header>
+		<h1>Three Word Poems</h1>
+		<nav><ol>
+			<li>about</li>
+			<li>log in</li>
+			<li>search</li>
+		</ol></nav>
+	</header>
+
+	<main role="main">
 <%= yield %>
+	</main>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
