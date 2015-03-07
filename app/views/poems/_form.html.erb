@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :poet_id %><br>
-    <%= f.number_field :poet_id %>
+    <%= f.select :poet_id, @poets.map {|poet| [poet.display_name, poet.id]}, {}, {multiple: false} %>
   </div>
   <div class="actions">
     <%= f.submit %>

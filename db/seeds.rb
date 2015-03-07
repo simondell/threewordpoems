@@ -53,6 +53,43 @@ Poem.create([{
   title: "On the importance of dreaming wednesdays",
   body: "Imagination's misty reign",
   poet_id: Poet.where(first_name: "Simon")[0].id,
-  colourway: nature,
+  colourway: warning,
   categories: [ten, mythic]
+	},{
+  title: "Three three three",
+  body: "classless cubic repetition",
+  poet_id: Poet.where(first_name: "Simon")[0].id,
+  colourway: ice,
+  categories: [ten]
+	},{
+  title: "You know that feeling you get when...",
+  body: "Endless public vomitting",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: nature,
+  categories: [ten]
+	},{
+  body: "Don't use titles",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: warning
+	},{
+  body: "Don't title uses",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: nature
+	},{
+  body: "Met a metaphore",
+  poet_id: Poet.where(first_name: "Simon")[0].id,
+  colourway: nature
+	},{
+  body: "New house smell",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: fire
+	},{
+  body: "Free-flowing creativity",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: warning
+	},{
+  body: "You know it.",
+  poet_id: Poet.where(first_name: "Anon")[0].id,
+  colourway: ice,
+  categories: [mythic]
 	}])

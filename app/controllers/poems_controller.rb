@@ -4,19 +4,32 @@ class PoemsController < ApplicationController
   # GET /poems
   # GET /poems.json
   def index
-    @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
-    @poets = Poet.all
-    @categories = Category.all
+    #@poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
+		top_ten_poems = Category.first.poems
+		session[:collection] = []
+		top_ten_poems.each {|poem| session[:collection].push poem.id}
+
+		respond_to do |format|
+			format.html { redirect_to Category.first.poems.first }
+			#format.html { redirect_to @poems.first }
+		end
   end
 
   # GET /poems/1
   # GET /poems/1.json
   def show
+		@coll = session[:collection] || nil
+		@current_id = params[ :id ].to_i
+		@current = @coll.find_index( @current_id )
+
+		if @current + 1 < @coll.size then @next_poem = Poem.find( @coll[ @current + 1 ] ) end
+		if @current - 1 >= 0 then @prev_poem = Poem.find( @coll[ @current - 1 ] ) end
   end
 
   # GET /poems/new
   def new
     @poem = Poem.new
+		@poets = Poet.all
   end
 
   # GET /poems/1/edit

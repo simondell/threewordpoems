@@ -14,6 +14,11 @@
   <strong>Poet:</strong>
   <%= @poem.poet_id %>
 </p>
-
+<%= if @prev_poem then link_to 'Previous', @prev_poem end %>
+<%= if @next_poem then link_to 'Next', @next_poem end %>
 <%= link_to 'Edit', edit_poem_path(@poem) %> |
 <%= link_to 'Back', poems_path %>
+<%= debug @prev_poem %>
+<%= debug @next_poem %>
+<%= debug @coll %>
+<%= debug @current %>
