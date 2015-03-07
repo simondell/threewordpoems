@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
   before_action :set_poem, only: [:show, :edit, :update, :destroy]
+	before_action :set_poets, only: [:edit, :update]
 
   # GET /poems
   # GET /poems.json
@@ -81,6 +82,10 @@ class PoemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_poem
       @poem = Poem.find(params[:id])
+    end
+
+		def set_poets
+      @poets = Poet.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
