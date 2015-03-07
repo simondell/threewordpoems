@@ -7,7 +7,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @poem.body %>
+	<%= if @next_poem then link_to @poem.body, @next_poem else @poem.body end %>
 </p>
 
 <p>
