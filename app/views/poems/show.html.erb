@@ -3,9 +3,10 @@
 	<% if @poem.image_url %>
 	<div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
 	<% end %>
+
 	<div class="poem__text">
-		<h1 class="poem__title" contenteditable><%= @poem.title %></h1>
-		<p class="poem__body" contenteditable><%= if @next_poem then link_to @poem.body, @next_poem else @poem.body end %></p>
+		<% if @poem.title then %><h1 class="poem__title"><%= @poem.title %></h1><% end %>
+		<p class="poem__body"><%= if @next_poem then link_to @poem.body, @next_poem else @poem.body end %></p>
 		<footer>
 			by <%= @poem.poet.display_name %> |
 			<%= link_to 'Edit', edit_poem_path(@poem) %>

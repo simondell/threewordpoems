@@ -27,7 +27,7 @@ body {
 	margin: 0 auto;
 	padding-top: 60px;
 	color: #333;
-	font-family: helvetica, sans-serif;
+	font-family: AnonymousPro, sans-serif;
 	background-color: #fff;
 }
 
@@ -71,8 +71,8 @@ body {
 
 	&:visited,
 	&:hover {
-		background-color: darkgrey;
-		color: white;
+		background-color: transparent;
+		color: black;
 	}
 }
 
