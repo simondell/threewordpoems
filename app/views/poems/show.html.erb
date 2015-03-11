@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
+<article class="poem" role="main">
+	<% if @poem.image_url %>
+	<div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
+	<% end %>
+	<div class="poem__text">
+		<h1 class="poem__title" contenteditable><%= @poem.title %></h1>
+		<p class="poem__body" contenteditable><%= if @next_poem then link_to @poem.body, @next_poem else @poem.body end %></p>
+		<footer>
+			by <%= @poem.poet.display_name %> |
+			<%= link_to 'Edit', edit_poem_path(@poem) %>
+		</footer>
+	</div>
+</article>
 
-<p>
-  <strong>Title:</strong>
-  <%= @poem.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-	<%= if @next_poem then link_to @poem.body, @next_poem else @poem.body end %>
-</p>
-
-<p>
-  <strong>Poet:</strong>
-  <%= @poem.poet_id %>
-</p>
 <%= if @prev_poem then link_to 'Previous', @prev_poem end %>
 <%= if @next_poem then link_to 'Next', @next_poem end %>
-<%= link_to 'Edit', edit_poem_path(@poem) %> |
-<%= link_to 'Back', poems_path %>

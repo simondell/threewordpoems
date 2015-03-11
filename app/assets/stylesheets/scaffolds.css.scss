@@ -1,4 +1,17 @@
-$verticals: 30px;
+@import "_reusable";
+
+article, main, nav {
+	display: block;
+}
+
+img {
+	max-width: 100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, ol, dl, ul, dt, dd, li, p {
+	padding: 0;
+	margin: 0;
+}
 
 html {
 	height: 100%;
@@ -7,68 +20,102 @@ html {
 }
 
 body {
+	box-sizing: border-box;
 	position: relative;
 	width: 960px;
 	height: 100%;
 	margin: 0 auto;
-  color: #333;
-  font-family: helvetica, sans-serif;
-  background-color: #fff;
+	padding-top: 60px;
+	color: #333;
+	font-family: helvetica, sans-serif;
+	background-color: #fff;
 }
 
-nav {
+[role="banner"] {
 	position: absolute;
-	top: 24px;
+	top: 30px;
 	right: 0;
 	text-align: right;
+	z-index: $z-infront;
+
+	* {
+		text-decoration: none;
+	}
+
+	& a {
+		font-size: 1rem;
+		display: inline-block;
+		height: $verticals;
+		padding: 0 0.5ex;
+		background-color: white;
+		color: black;
+	}
+
+	ol {
+		list-style: none;
+	}
+
+	nav a {
+		&:visited {
+			color: black;
+		}
+		&:hover {
+			color: white;
+			background-color: black;
+		}
+	}
+}
+
+#site-title {
+	text-transform: lowercase;
+
+	&:visited,
+	&:hover {
+		background-color: darkgrey;
+		color: white;
+	}
 }
 
 a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+	color: #000;
+	&:visited {
+		color: #666;
+	}
+	&:hover {
+		color: #fff;
+		background-color: #000;
+	}
 }
 
 #notice {
-  color: green;
+	color: green;
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+	padding: 2px;
+	background-color: red;
+	display: table;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+	width: 450px;
+	border: 2px solid red;
+	padding: 7px;
+	padding-bottom: 0;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+	h2 {
+		text-align: left;
+		font-weight: bold;
+		padding: 5px 5px 5px 15px;
+		font-size: 12px;
+		margin: -7px;
+		margin-bottom: 0px;
+		background-color: #c00;
+		color: #fff;
+	}
+	ul li {
+		font-size: 12px;
+		list-style: square;
+	}
 }

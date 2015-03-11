@@ -9,19 +9,19 @@
 
 <body>
 
-	<header>
-		<h1>Three Word Poems</h1>
+	<header role="banner">
+		<div><a id="site-title" href="/poems" title="Return to the homepage, and show a poem from the Top Ten poems.">Three Word Poems</a></div>
 		<nav><ol>
-			<li>about</li>
+			<li><a href="#">about</a></li>
 			<li><%= link_to "contribute", new_poem_path %></li>
-			<li>log in</li>
-			<li>search</li>
+			<li><a href="#">log in</a></li>
+			<li><!-- <form action="/" name="search">
+				<input type="text" placeholder="search" value="" />
+			</form> -->search</li>
 		</ol></nav>
 	</header>
 
-	<main role="main">
-<%= yield %>
-	</main>
+	<%= yield %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
