@@ -4,3 +4,19 @@ $verticals: 30px;
 /* z-indexes */
 $z-behind: 1;
 $z-infront: 2;
+
+/* building blocks */
+.boxout {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 400px;
+	z-index: $z-infront;
+	padding: 0.5ex 1ex;
+	background-color: black;
+	color: white;
+
+	form & {
+		padding-bottom: 1ex;
+	}
+}

@@ -1,33 +1,31 @@
-<%= form_for(@poem) do |f| %>
-  <% if @poem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@poem.errors.count, "error") %> prohibited this poem from being saved:</h2>
+<%= form_for @poem, url: {action: "create"}, html: {class: "poem"} do |f| %>
+	<div class="poem__text">
+	  <% if @poem.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@poem.errors.count, "error") %> prohibited this poem from being saved:</h2>
 
-      <ul>
-      <% @poem.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+			<% @poem.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+		<% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </div>
-  <div class="field">
-    <%= f.label :poet_id %><br>
-    <%= f.select :poet_id, @poets.map {|poet| [poet.display_name, poet.id]}, {}, {multiple: false} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+		<div class="field">
+		<div class="field">
+			<%= f.label :image, 'image' %>
+			<%= f.file_field :image %>
+		</div>
+			<%= f.label :title, 'title' %>
+			<%= f.text_field :title, placeholder: "this is optional" %>
+		</div>
+		<div class="field">
+			<%= f.label :body, "poem" %>
+			<%= f.text_field :body, placeholder: "Coerce terse verse..." %>
+		</div>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>
