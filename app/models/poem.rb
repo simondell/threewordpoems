@@ -5,11 +5,12 @@ class Poem < ActiveRecord::Base
 	has_many :poem_categories
 	has_many :categories, through: :poem_categories
 
+	# enums
+	enum workflow_step: [ :unsaved, :submitted, :published, :edited ]
 
 	# extras
 	mount_uploader :image, PoemImageUploader # adds image uploading
 
-
-	# scope :top_ten, -> { where top_ten: true }
+	# scopes
 	scope :categorise_by, -> ( category_name ) { joins( :categories ).where( 'categories.name = ?', category_name ) if category_name.present? }
 end

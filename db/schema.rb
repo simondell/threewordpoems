@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201005933) do
+ActiveRecord::Schema.define(version: 20150415214127) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150201005933) do
     t.integer  "image_id"
     t.integer  "colourway_id"
     t.string   "image"
+    t.integer  "workflow_step", default: 0
   end
 
   create_table "poets", force: true do |t|
