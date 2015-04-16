@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'open-uri'
 
 
 # seed Colourways
@@ -48,8 +49,7 @@ Poet.create!([{
 
 # seed Poems
 Poem.destroy_all
-
-Poem.create([{
+test_poems = [{
   title: "",
   body: "Left foot forward",
   poet_id: Poet.where(first_name: "Anon")[0].id,
@@ -107,4 +107,12 @@ Poem.create([{
   colourway: ice,
   categories: [mythic],
   workflow_step: 2
-	}])
+	}]
+
+test_poems.each do |poem|
+  # lorempixel = open('http://lorempixel.com/1024/690/abstract') do |pixels|
+  #   poem.image = pixels
+  # end
+
+  Poem.create( poem )
+end
