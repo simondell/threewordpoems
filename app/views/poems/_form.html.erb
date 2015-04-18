@@ -1,4 +1,4 @@
-<%= form_for @poem, url: {action: "create"}, html: {class: "poem"} do |f| %>
+<%= form_for @poem, html: {class: "poem"} do |f| %>
 	<div class="poem__text">
 	  <% if @poem.errors.any? %>
 		<div id="error_explanation">
