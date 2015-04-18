@@ -110,9 +110,7 @@ test_poems = [{
 	}]
 
 test_poems.each do |poem|
-  # lorempixel = open('http://lorempixel.com/1024/690/abstract') do |pixels|
-  #   poem.image = pixels
-  # end
-
+  # poem.image = open('http://lorempixel.com/1024/690/abstract')
+  poem[:image] = open('http://lorempixel.com/1024/690/abstract')
   Poem.create( poem )
 end

@@ -17,3 +17,6 @@
 
 # Ignore vim swap files
 *.swp
+
+# Ignore seed images and upload tests
+public/uploads/
