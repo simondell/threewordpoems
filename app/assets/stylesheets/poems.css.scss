@@ -12,13 +12,23 @@
 
 	a {
 		text-decoration: none;
-
-		&:hover,
-		&:visited {
-			color: white;
-		}
 	}
 
+	.poem__nav {
+		@extend .links-in-front;
+		position: absolute;
+		top: 50%;
+		z-index: $z-infront;
+		width: 120px;
+		margin-top: $verticals / -2;
+		text-align: center;
+
+		&#prev { left: 0; transform: rotate(270deg); }
+		&#next { right: 0; transform: rotate(90deg);}
+	}
+}
+
+.poem--editing {
 	.field {
 		letter-spacing: -2px;
 
@@ -42,8 +52,8 @@
 		width: 70px;
 	}
 
-	inputx {
-		width: 290px;
+	input {
+		width: 390px;
 		border: 0;
 		outline: 0;
 	}
@@ -60,4 +70,16 @@
 
 	.poem__text {
 		@extend .boxout;
+		left: 0;
+		bottom: 0;
+
+		.poem--editing &,
+		.poem--maximised & {
+			top: 200px;
+			left: 50px;
+			bottom: auto;
+			width: 500px;
+		}
+
+
 	}

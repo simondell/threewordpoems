@@ -41,11 +41,21 @@ button {
 		font-family: 'Anonymous Pro', sans-serif;
 }
 
+a {
+	color: white;
+
+	&:visited {
+		color: white;
+	}
+
+	&:hover {
+		color: black;
+		background-color: white;
+	}
+}
+
 [role="banner"] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	text-align: right;
+	position: relative;
 	z-index: $z-infront;
 
 	* {
@@ -57,48 +67,40 @@ button {
 		display: inline-block;
 		height: $verticals;
 		padding: 0 0.5ex;
-		background-color: white;
-		color: black;
 	}
 
 	ol {
 		list-style: none;
 	}
 
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		text-align: right;
+	}
+
 	nav a {
-		&:visited {
-			color: black;
-		}
-		&:hover {
-			color: white;
-			background-color: black;
-		}
+		@extend .links-in-front;
 	}
 }
 
 #site-title {
-	text-transform: lowercase;
+	position: absolute;
+	top: 0;
+	left: 0;
 
-	&:visited,
 	&:hover {
-		background-color: transparent;
-		color: black;
+		background-color: yellow;
+		color: blue;
 	}
 }
 
-a {
-	color: #000;
-	&:visited {
-		color: #666;
-	}
-	&:hover {
-		color: #fff;
-		background-color: #000;
-	}
-}
 
 #notice {
-	color: green;
+	font-weight: bold;
+	background-color: green;
+	color: white;
 }
 
 .field_with_errors {

@@ -8,9 +8,6 @@ $z-infront: 2;
 /* building blocks */
 .boxout {
 	position: absolute;
-	right: 0;
-	bottom: 0;
-	width: 400px;
 	z-index: $z-infront;
 	padding: 0.5ex 1ex;
 	background-color: black;
@@ -19,4 +16,17 @@ $z-infront: 2;
 	form & {
 		padding-bottom: 1ex;
 	}
+}
+
+.links-in-front {
+		background-color: white;
+		color: black;
+
+		&:visited {
+			color: black;
+		}
+		&:hover {
+			background-color: black;
+			color: white;
+		}
 }
