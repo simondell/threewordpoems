@@ -19,18 +19,27 @@ class PoemsController < ApplicationController
 	# GET /poems/1
 	# GET /poems/1.json
 	def show
-		@coll = session[:collection] || nil
 		@current_id = params[ :id ].to_i
-		@current = @coll.find_index( @current_id )
+		@coll = session[:collection] || nil
 
-		if @current + 1 < @coll.size then @next_poem = Poem.find( @coll[ @current + 1 ] ) end
-		if @current - 1 >= 0 then @prev_poem = Poem.find( @coll[ @current - 1 ] ) end
+		unless @coll == nil
+			@current = @coll.find_index( @current_id ) || nil
+
+			if @current + 1 < @coll.size
+				@next_poem = Poem.find( @coll[ @current + 1 ] )
+			end
+
+			if @current - 1 >= 0
+				@prev_poem = Poem.find( @coll[ @current - 1 ] )
+			end
+		end # unless
 	end
 
 	# GET /poems/new
 	def new
 		@poem = Poem.new
 		@poets = Poet.all
+		session[:collection] = nil
 	end
 
 	# GET /poems/1/edit
