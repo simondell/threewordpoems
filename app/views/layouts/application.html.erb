@@ -11,13 +11,12 @@
 
 	<header role="banner">
 		<div><a id="site-title" href="/poems" title="Return to the homepage, and show a poem from the Top Ten poems.">Three Word Poems!</a></div>
+		<form action="/" name="search" id="search"></form>
 		<nav><ol>
 			<li><a href="#">about</a></li>
 			<li><%= link_to "contribute", new_poem_path %></li>
 			<li><a href="#">log in</a></li>
-			<li><!-- <form action="/" name="search">
-				<input type="text" placeholder="search" value="" />
-			</form> -->search</li>
+			<li><input type="text" placeholder="search" value="" form="search" /><button type="submit" form="search">?</button></li>
 		</ol></nav>
 	</header>
 

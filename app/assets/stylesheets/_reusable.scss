@@ -6,6 +6,11 @@ $z-behind: 1;
 $z-infront: 2;
 
 /* building blocks */
+.text-box {
+	padding: 0 0.5ex;
+	font-size: 1rem;
+}
+
 .boxout {
 	position: absolute;
 	z-index: $z-infront;
@@ -25,6 +30,8 @@ $z-infront: 2;
 		&:visited {
 			color: black;
 		}
+
+		&:focus,
 		&:hover {
 			background-color: black;
 			color: white;
