@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419090502) do
+ActiveRecord::Schema.define(version: 20150507124340) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150419090502) do
     t.string   "image"
     t.integer  "workflow_step", default: 0
     t.boolean  "maximised",     default: true
+    t.text     "keywords"
   end
 
   create_table "poets", force: true do |t|
