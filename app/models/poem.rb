@@ -13,4 +13,13 @@ class Poem < ActiveRecord::Base
 
 	# scopes
 	scope :categorise_by, -> ( category_name ) { joins( :categories ).where( 'categories.name = ?', category_name ) if category_name.present? }
+
+	# callbacks
+	before_save :set_keywords
+
+protected
+
+	def set_keywords
+		self.keywords = [title, body].map(&:downcase).join(" ")
+	end
 end

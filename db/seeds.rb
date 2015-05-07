@@ -77,31 +77,37 @@ test_poems = [{
   categories: [ten],
   workflow_step: 2
 	},{
+  title: "",
   body: "Don't use titles",
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway: warning,
   workflow_step: 2
 	},{
+  title: "",
   body: "Don't title uses",
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway: nature,
   workflow_step: 2
 	},{
+  title: "",
   body: "Met a metaphore",
   poet_id: Poet.where(first_name: "Simon")[0].id,
   colourway: nature,
   workflow_step: 2
 	},{
+  title: "",
   body: "New house smell",
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway: fire,
   workflow_step: 2
 	},{
+  title: "",
   body: "Free-flowing creativity",
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway: warning,
   workflow_step: 2
 	},{
+  title: "",
   body: "You know it.",
   poet_id: Poet.where(first_name: "Anon")[0].id,
   colourway: ice,
