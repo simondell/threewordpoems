@@ -11,16 +11,27 @@
 
 	<header role="banner">
 		<div><a id="site-title" href="/poems" title="Return to the homepage, and show a poem from the Top Ten poems.">Three Word Poems!</a></div>
-		<form action="/" name="search" id="search"></form>
 		<nav><ol>
 			<li><a href="#">about</a></li>
 			<li><%= link_to "contribute", new_poem_path %></li>
 			<li><a href="#">log in</a></li>
-			<li><input type="text" placeholder="search" value="" form="search" /><button type="submit" form="search">?</button></li>
-		</ol></nav>
-	</header>
+			<li>
+<!--
+				<form action="/" name="search" id="search"></form>
+				<input type="text" name="" placeholder="search" value="" form="search" /><button type="submit" form="search">?</button>
+ -->
+				<%= form_tag( poems_path, method: "get" ) do %>
+<!-- 					<%= label_tag(:q, "Search for:") %> -->
+					<%= text_field_tag(:search_for, @search_for) %>
+					<%= submit_tag("?") %>
+				<% end %>
+			</li>
+		</ol>
 
-	<%= yield %>
+		<%= yield if @poems %>
+
+		</nav>
+	</header>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

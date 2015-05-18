@@ -13,6 +13,7 @@ class Poem < ActiveRecord::Base
 
 	# scopes
 	scope :categorise_by, -> ( category_name ) { joins( :categories ).where( 'categories.name = ?', category_name ) if category_name.present? }
+	scope :search, -> ( keyword ) { where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
 
 	# callbacks
 	before_save :set_keywords

@@ -1,49 +1,9 @@
-<h1>Listing poems</h1>
-
-<table id="poems">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Poet</th>
-      <th>Categories</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%= render @poems %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Poem', new_poem_path, id: 'new-poem' %>
-
-<%= form_for(Poem.new, remote: true, html: {id: 'new-poem-form', multipart: true} ) do |f| %>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
-  </div>
-  <div class="field">
-    <%= f.label :poet_id %><br>
-    <%= f.select :poet_id, @poets.map {|poet| [poet.display_name, poet.id]}, {}, {multiple: false} %>
-  </div>
-  <div class="field">
-    <%= f.label :category_ids %><br>
-    <%= f.select :category_ids, @categories.map {|cat| [cat.name, cat.id]}, {}, {multiple: true} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-
-<% end %>
+<section id="results">
+  <h1>You searched for: <%= @search_for %></h1>
+  <p>Found <%= @poems.count %> matches</p>
+  <ol>
+    <% @poems.each do |poem| %>
+    <li><%= poem.body %></li>
+    <% end unless @poems.nil? %>
+  </ol>
+</section>

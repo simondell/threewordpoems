@@ -5,15 +5,12 @@ class PoemsController < ApplicationController
 	# GET /poems
 	# GET /poems.json
 	def index
-		#@poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
-		top_ten_poems = Category.first.poems
-		session[:collection] = []
-		top_ten_poems.each {|poem| session[:collection].push poem.id}
+		# @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
+		@search_for = params[:search_for]
+		@poems = Poem.search( params[:search_for] ) unless @search_for.nil?
 
-		respond_to do |format|
-			format.html { redirect_to Category.first.poems.first }
-			#format.html { redirect_to @poems.first }
-		end
+		# cache for later
+		session[:search_for] = @search_for
 	end
 
 	# GET /poems/1
