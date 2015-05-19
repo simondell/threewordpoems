@@ -3,7 +3,7 @@
   <p>Found <%= @poems.count %> matches</p>
   <ol>
     <% @poems.each do |poem| %>
-    <li><%= poem.body %></li>
+    <li><%= link_to poem.body, poem %></li>
     <% end unless @poems.nil? %>
   </ol>
 </section>

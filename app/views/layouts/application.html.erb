@@ -16,14 +16,9 @@
 			<li><%= link_to "contribute", new_poem_path %></li>
 			<li><a href="#">log in</a></li>
 			<li>
-<!--
-				<form action="/" name="search" id="search"></form>
-				<input type="text" name="" placeholder="search" value="" form="search" /><button type="submit" form="search">?</button>
- -->
 				<%= form_tag( poems_path, method: "get" ) do %>
 <!-- 					<%= label_tag(:q, "Search for:") %> -->
-					<%= text_field_tag(:search_for, @search_for) %>
-					<%= submit_tag("?") %>
+					<%= text_field_tag(:search_for, @search_for) %><%= submit_tag("?") %>
 				<% end %>
 			</li>
 		</ol>
@@ -32,6 +27,8 @@
 
 		</nav>
 	</header>
+
+	<%= yield unless @poems %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
