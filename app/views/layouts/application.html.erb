@@ -23,12 +23,12 @@
 			</li>
 		</ol>
 
-		<%= yield if @poems %>
+		<%= yield unless @poems.nil? %>
 
 		</nav>
 	</header>
 
-	<%= yield unless @poems %>
+	<%= yield %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

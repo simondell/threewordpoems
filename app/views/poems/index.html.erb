@@ -1,6 +1,6 @@
 <section id="results">
   <h1>You searched for: <%= @search_for %></h1>
-  <p>Found <%= @poems.count %> matches</p>
+  <p>Found <%= @poems.count unless @poems.nil? %> matches</p>
   <ol>
     <% @poems.each do |poem| %>
     <li><%= link_to poem.body, poem %></li>
