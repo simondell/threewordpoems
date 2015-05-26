@@ -1,5 +1,5 @@
 /* grid/rhythm */
-$verticals: 30px;
+$verticals: 20px;
 
 /* z-indexes */
 $z-behind: 1;
@@ -9,6 +9,11 @@ $z-infront: 2;
 .text-box {
 	padding: 0 0.5ex;
 	font-size: 1rem;
+}
+
+.block-line {
+	height: $verticals;
+	line-height: $verticals;
 }
 
 .boxout {

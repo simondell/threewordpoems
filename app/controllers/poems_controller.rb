@@ -1,13 +1,18 @@
 class PoemsController < ApplicationController
 	before_action :set_poem, only: [:show, :edit, :update, :destroy]
-	before_action :set_poets, only: [:edit, :update]
 	before_action :set_search_for, only: [:index, :show]
 
 	# GET /poems
 	# GET /poems.json
 	def index
 		# @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
-		@poems = Poem.search( params[:search_for] ) unless @search_for.nil?
+		if @search_for.nil?
+			@poems = Category.first.poems
+		else
+			@poems = Poem.search( params[:search_for] )
+		end
+
+		@poem = @poems.first
 
 		# cache for later
 		session[:search_for] = @search_for
@@ -16,7 +21,7 @@ class PoemsController < ApplicationController
 	# GET /poems/1
 	# GET /poems/1.json
 	def show
-
+		@where_now = @search_for
 		# @current_id = params[ :id ].to_i
 		# @coll = session[ :collection ] || nil
 
@@ -36,8 +41,6 @@ class PoemsController < ApplicationController
 	# GET /poems/new
 	def new
 		@poem = Poem.new
-		@poets = Poet.all
-		session[:collection] = nil
 	end
 
 	# GET /poems/1/edit
@@ -89,10 +92,6 @@ class PoemsController < ApplicationController
 		# Use callbacks to share common setup or constraints between actions.
 		def set_poem
 			@poem = Poem.find(params[:id])
-		end
-
-		def set_poets
-			@poets = Poet.all
 		end
 
 		def set_search_for

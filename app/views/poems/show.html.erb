@@ -1,19 +1,7 @@
-<article class="poem<%= ' poem--maximised' if @poem.maximised %>" role="main">
-	<% if @poem.image_url %>
-	<div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
-	<% end %>
-
-	<div class="poem__text">
-		<p id="notice"><%= notice %></p>
-
-		<% if @poem.title then %><h1 class="poem__title"><%= @poem.title %></h1><% end %>
-		<% if @poem.maximised then %><p class="poem__body"><%= @poem.body %></p><% end %>
-		<footer>
-			<% if @poem.poet != nil %>
-			by <%= @poem.poet.display_name %> |
-			<% end %>
-			<%= link_to 'Edit', edit_poem_path(@poem) %>
-		</footer>
+<nav id="orientation">
+	<div id="where-now">Exploring "<%= @where_now %>"</div>
+	<div id="where-next">
+    <%= link_to 'Previous', '#', { id: 'prev' } %>
+    <%= link_to 'Next', '#', { id: 'next' } %>
 	</div>
-
-</article>
+</nav>

@@ -1,4 +1,4 @@
-<section id="results">
+<nav id="results">
   <h1>You searched for: <%= @search_for %></h1>
   <p>Found <%= @poems.count unless @poems.nil? %> matches</p>
   <ol>
@@ -6,4 +6,4 @@
     <li><%= link_to poem.body, poem %></li>
     <% end unless @poems.nil? %>
   </ol>
-</section>
+</nav>

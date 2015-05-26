@@ -88,6 +88,26 @@
 			bottom: auto;
 			width: 500px;
 		}
-
-
 	}
+
+
+
+#results {
+	background-color: white;
+	text-align: left;
+
+	h1 {
+		font-size: 1rem;
+	}
+
+	ol {
+		display: table;
+	}
+
+	li {
+		display: table-row;
+		height: $verticals * 2;
+		line-height: $verticals * 2;
+		white-space: nowrap;
+	}
+}

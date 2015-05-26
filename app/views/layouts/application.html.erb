@@ -1,34 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Threewordpoems</title>
-	<meta name="viewport" content="width: 960px" />
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-
+<%= render 'shared/head' %>
 <body>
 
-	<header role="banner">
-		<div><a id="site-title" href="/poems" title="Return to the homepage, and show a poem from the Top Ten poems.">Three Word Poems!</a></div>
-		<nav><ol>
-			<li><a href="#">about</a></li>
-			<li><%= link_to "contribute", new_poem_path %></li>
-			<li><a href="#">log in</a></li>
-			<li>
-				<%= form_tag( poems_path, method: "get" ) do %>
-<!-- 					<%= label_tag(:q, "Search for:") %> -->
-					<%= text_field_tag(:search_for, @search_for) %><%= submit_tag("?") %>
-				<% end %>
-			</li>
-		</ol>
+	<%= render "shared/site_title" %>
 
-		<%= yield unless @poems.nil? %>
+	<div id="sign-posts">
+		<%= render "shared/site_sections" %>
 
-		</nav>
-	</header>
+		<%= yield %>
+	</div>
 
-	<%= yield %>
+	<%= render 'poems/poem' %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
