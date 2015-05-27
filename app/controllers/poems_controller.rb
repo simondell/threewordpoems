@@ -16,26 +16,29 @@ class PoemsController < ApplicationController
 
 		# cache for later
 		session[:search_for] = @search_for
+		session[:index] = 0
 	end
 
 	# GET /poems/1
 	# GET /poems/1.json
 	def show
-		@where_now = @search_for
-		# @current_id = params[ :id ].to_i
-		# @coll = session[ :collection ] || nil
+		@poems = Poem.search( session[:search_for] )
+		current_poem_index = @poems.find_index @poem
+logger.debug "Search for: #{session[:search_for]}"
+logger.debug "Poem count = #{@poems.size}"
+@poems.each { |p| logger.debug "Poem set #{p.id}" }
 
-		# unless @coll == nil
-		# 	@current = @coll.find_index( @current_id ) || nil
+logger.debug "Poem #{@poem.id}"
+logger.debug "Current Poem Index = #{current_poem_index}"
+		unless @poems == nil
+			if current_poem_index + 1 < @poems.size
+				@next_poem = @poems[ current_poem_index + 1 ]
+			end
 
-		# 	if @current + 1 < @coll.size
-		# 		@next_poem = Poem.find( @coll[ @current + 1 ] )
-		# 	end
-
-		# 	if @current - 1 >= 0
-		# 		@prev_poem = Poem.find( @coll[ @current - 1 ] )
-		# 	end
-		# end # unless
+			if current_poem_index - 1 >= 0
+				@prev_poem = @poems[ current_poem_index - 1 ]
+			end
+		end # unless
 	end
 
 	# GET /poems/new
@@ -95,7 +98,7 @@ class PoemsController < ApplicationController
 		end
 
 		def set_search_for
-			@search_for = params[:search_for]
+			@search_for = params[:search_for] || session[:search_for] || nil
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.
