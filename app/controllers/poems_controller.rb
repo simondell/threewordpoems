@@ -24,12 +24,7 @@ class PoemsController < ApplicationController
 	def show
 		@poems = Poem.search( session[:search_for] )
 		current_poem_index = @poems.find_index @poem
-logger.debug "Search for: #{session[:search_for]}"
-logger.debug "Poem count = #{@poems.size}"
-@poems.each { |p| logger.debug "Poem set #{p.id}" }
 
-logger.debug "Poem #{@poem.id}"
-logger.debug "Current Poem Index = #{current_poem_index}"
 		unless @poems == nil
 			if current_poem_index + 1 < @poems.size
 				@next_poem = @poems[ current_poem_index + 1 ]
