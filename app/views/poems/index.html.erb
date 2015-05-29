@@ -1,5 +1,5 @@
 <nav id="results">
-  <h1>You searched for: <%= @search_for %></h1>
+  <h1>You searched for: <%= session[:search_for] %></h1>
   <p>Found <%= @poems.count unless @poems.nil? %> matches</p>
   <ol>
     <% @poems.each do |poem| %>
