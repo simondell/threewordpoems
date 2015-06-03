@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
+	DEFAULT_CATEGORY = Category.first
+
 	def show
+		set_category_or_default() or return
 
 		@poems = Category.first.poems
 		@poem = @poems.first
@@ -16,6 +19,16 @@ class CategoriesController < ApplicationController
 			end
 		end # unless
 
+		@search_for = Category.first.name
 		render "poems/show"
+	end
+
+private
+	def set_category_or_default
+		if params[:id].nil? || params[:id] == ""
+			redirect_to action: "show", id: DEFAULT_CATEGORY.id
+			return
+		end
+		@category = Category.find(params[:id])
 	end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/show'
+  get 'categories/'  => "categories#show"
+  get 'categories/:id' => "categories#show"
 
   resources :poems
 
