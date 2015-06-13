@@ -1,17 +1,16 @@
 class PoemsController < ApplicationController
 	before_action :set_poem, only: [:show, :edit, :update, :destroy]
-	before_action :set_search_for, only: [:index, :show]
 
 	# GET /poems
 	# GET /poems.json
 	def index
 		# @poems = Poem.includes( :categories ).categorise_by( params[:categorise_by] )
-		if @search_for.nil?
-			@poems = Category.first.poems
-		else
-			@poems = Poem.search( params[:search_for] )
-		end
 
+		# If we get to the index/search results page without a search term, redirect
+		#  to categories.first
+		redirect_to categories_url and return if @search_for.nil?
+
+		@poems = Poem.search( params[:search_for] )
 		@poem = @poems.first
 
 		# cache for later
@@ -25,15 +24,15 @@ class PoemsController < ApplicationController
 		@poems = Poem.search( session[:search_for] )
 		current_poem_index = @poems.find_index @poem
 
-		unless @poems == nil
-			if current_poem_index + 1 < @poems.size
-				@next_poem = @poems[ current_poem_index + 1 ]
-			end
+		# unless @poems.nil?
+		# 	if current_poem_index + 1 < @poems.size
+		# 		@next_poem = @poems[ current_poem_index + 1 ]
+		# 	end
 
-			if current_poem_index - 1 >= 0
-				@prev_poem = @poems[ current_poem_index - 1 ]
-			end
-		end # unless
+		# 	if current_poem_index - 1 >= 0
+		# 		@prev_poem = @poems[ current_poem_index - 1 ]
+		# 	end
+		# end # unless
 	end
 
 	# GET /poems/new
