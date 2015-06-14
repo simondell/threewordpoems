@@ -1,5 +1,6 @@
 class PoemsController < ApplicationController
 	before_action :set_poem, only: [:show, :edit, :update, :destroy]
+	before_action :set_search_for, only: [:show, :index]
 
 	# GET /poems
 	# GET /poems.json

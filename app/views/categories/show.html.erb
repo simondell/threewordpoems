@@ -1,7 +1,7 @@
 <nav id="orientation">
-	<div id="where-now">Exploring "<%= @search_for %>"</div>
-	<div id="where-next">
-    <%= if @prev_poem then link_to 'Previous', @prev_poem, { id: 'prev', class: 'poem__nav' } end %>
-    <%= if @next_poem then link_to 'Next', @next_poem, { id: 'next', class: 'poem__nav' } end %>
-	</div>
+    <div id="where-now">In "<%= @category.name %>"</div>
+    <div id="where-next">
+    <%= if @prev_poem_index then link_to 'Previous', category_path(@category, index: @prev_poem_index ), { id: 'prev', class: 'poem__nav' } end %>
+    <%= if @next_poem_index then link_to 'Next', category_path(@category, index: @next_poem_index ), { id: 'next', class: 'poem__nav' } end %>
+    </div>
 </nav>
