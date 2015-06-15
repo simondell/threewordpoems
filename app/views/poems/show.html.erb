@@ -1,1 +1,7 @@
-<%= render partial: 'shared/orientation', locals: { label: 'Exploring' } %>
+<nav id="orientation">
+    <div id="where-now">Exploring "<%= @search_for %>"</div>
+    <div id="where-next">
+    <%= if @prev_poem then link_to 'Previous', @prev_poem, { id: 'prev', class: 'poem__nav' } end %>
+    <%= if @next_poem then link_to 'Next', @next_poem, { id: 'next', class: 'poem__nav' } end %>
+    </div>
+</nav>
