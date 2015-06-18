@@ -33,7 +33,7 @@ mythic = Category.create!( {name: "Mythic"} )
 Poet.destroy_all
 
 Poet.create!([{
-	display_name: "Anon E Mousse",
+	display_name: "Anon",
 	email: "anon_e_mousse@threewordpoems.com",
 	first_name: "Anon",
 	last_name: "Mousse"
@@ -45,6 +45,8 @@ Poet.create!([{
 	last_name: "Dell"
 	}])
 
+anon = Poet.first
+simon = Poet.second
 
 
 # seed Poems
@@ -52,40 +54,40 @@ Poem.destroy_all
 test_poems = [{
   title: "",
   body: "Left foot forward",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: fire,
   categories: [ten, aphorism]
 	},{
   title: "On the importance of dreaming wednesdays",
   body: "Imagination's misty reign",
-  poet_id: Poet.where(first_name: "Simon")[0].id,
+  poet_id: simon,
   colourway: warning,
   categories: [ten, mythic],
   workflow_step: 2
 	},{
   title: "Three three three",
   body: "classless cubic repetition",
-  poet_id: Poet.where(first_name: "Simon")[0].id,
+  poet_id: simon,
   colourway: ice,
   categories: [ten],
   workflow_step: 2
 	},{
   title: "You know that feeling you get when...",
   body: "Endless public vomitting",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: nature,
   categories: [ten],
   workflow_step: 2
 	},{
   title: "",
   body: "Don't use titles",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: warning,
   workflow_step: 2
 	},{
   title: "",
   body: "Don't title uses",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: nature,
   workflow_step: 2
 	},{
@@ -97,19 +99,19 @@ test_poems = [{
 	},{
   title: "",
   body: "New house smell",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: fire,
   workflow_step: 2
 	},{
   title: "",
   body: "Free-flowing creativity",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: warning,
   workflow_step: 2
 	},{
   title: "",
   body: "You know it.",
-  poet_id: Poet.where(first_name: "Anon")[0].id,
+  poet_id: anon,
   colourway: ice,
   categories: [mythic],
   workflow_step: 2
