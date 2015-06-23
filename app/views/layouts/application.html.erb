@@ -8,10 +8,10 @@
 	<div id="sign-posts">
 		<%= render "shared/site_sections" %>
 
-		<%= yield %>
+		<%= yield :orientation %>
 	</div>
 
-	<%= render 'poems/poem' %>
+	<%= yield %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

@@ -52,7 +52,7 @@ class PoemsController < ApplicationController
 
 		respond_to do |format|
 			if @poem.save
-				format.html { redirect_to @poem, notice: 'Poem was successfully created.' }
+				format.html { redirect_to @poem, notice: 'Your poem was saved.' }
 				format.json { render :show, status: :created, location: @poem }
 				format.js
 			else
