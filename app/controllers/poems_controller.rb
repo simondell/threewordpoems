@@ -49,6 +49,7 @@ class PoemsController < ApplicationController
 	# POST /poems.json
 	def create
 		@poem = Poem.new(poem_params)
+		@poem.poet = Poet.first
 
 		respond_to do |format|
 			if @poem.save
