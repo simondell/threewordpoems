@@ -10,6 +10,7 @@ class PoetsController < ApplicationController
   # GET /poets/1
   # GET /poets/1.json
   def show
+    @poet = Poet.find params[:id]
   end
 
   # GET /poets/new
