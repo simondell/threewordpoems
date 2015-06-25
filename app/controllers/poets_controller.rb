@@ -1,75 +1,31 @@
 class PoetsController < ApplicationController
-  before_action :set_poet, only: [:show, :edit, :update, :destroy]
+  DEFAULT_POET = Poet.first
 
-  # GET /poets
-  # GET /poets.json
-  def index
-    @poets = Poet.all
-  end
-
-  # GET /poets/1
-  # GET /poets/1.json
   def show
-    @poet = Poet.find params[:id]
-  end
-
-  # GET /poets/new
-  def new
-    @poet = Poet.new
-  end
-
-  # GET /poets/1/edit
-  def edit
-  end
-
-  # POST /poets
-  # POST /poets.json
-  def create
-    @poet = Poet.new(poet_params)
-
-    respond_to do |format|
-      if @poet.save
-        format.html { redirect_to @poet, notice: 'Poet was successfully created.' }
-        format.json { render :show, status: :created, location: @poet }
-      else
-        format.html { render :new }
-        format.json { render json: @poet.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /poets/1
-  # PATCH/PUT /poets/1.json
-  def update
-    respond_to do |format|
-      if @poet.update(poet_params)
-        format.html { redirect_to @poet, notice: 'Poet was successfully updated.' }
-        format.json { render :show, status: :ok, location: @poet }
-      else
-        format.html { render :edit }
-        format.json { render json: @poet.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /poets/1
-  # DELETE /poets/1.json
-  def destroy
-    @poet.destroy
-    respond_to do |format|
-      format.html { redirect_to poets_url, notice: 'Poet was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_poet
-      @poet = Poet.find(params[:id])
+    if params[:id].nil?
+      redirect_to action: "show", id: DEFAULT_POET.id and return
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def poet_params
-      params.require(:poet).permit(:display_name, :email, :passwordhash, :first_name, :last_name)
+    @poet = Poet.find(params[:id])
+    @poems = @poet.poems
+
+    if params[:index].nil?
+      @poem = @poems.first
+      current_poem_index = 0
+    else
+      current_poem_index = params[:index].to_i
+      @poem = @poems[ current_poem_index ]
     end
+
+    if current_poem_index - 1 >= 0
+      @prev_poem_index = current_poem_index - 1
+    end
+
+    if current_poem_index + 1 < @poems.size
+      @next_poem_index = current_poem_index + 1
+    end
+
+    @search_for = @poet.display_name
+  end
+
 end

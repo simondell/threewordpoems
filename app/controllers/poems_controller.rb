@@ -7,7 +7,7 @@ class PoemsController < ApplicationController
 	def index
 		# If we get to the index/search results page without a search term, redirect
 		#  to categories.first
-		redirect_to categories_url and return if @search_for.nil?
+		redirect_to categories_url(Category.first) and return if @search_for.nil?
 
 		@poems = Poem.search( params[ :search_for ] )
 
