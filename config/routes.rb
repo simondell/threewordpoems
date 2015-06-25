@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'categories/'  => "categories#show"
-  get 'categories/:id' => "categories#show", as: 'category'
 
   resources :poems
+  resources :categories, only: [:show]
 
   root to: "categories#show"
 
