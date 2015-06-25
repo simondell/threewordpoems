@@ -8,6 +8,7 @@ class PoetsController < ApplicationController
 
     @poet = Poet.find(params[:id])
     @poems = @poet.poems
+    @show_list = params[ :index ].nil? || params[ :list ] == 'true'
 
     if params[:index].nil?
       @poem = @poems.first

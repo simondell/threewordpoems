@@ -1,10 +1,19 @@
 <% content_for :orientation do %>
 <nav id="orientation">
-    <div id="where-now">By "<%= @poet.display_name %>"</div>
+  <div id="where-now">By "<%= @poet.display_name %>"</div>
+
+	<% if @show_list then %>
+	  <ol>
+	    <% @poems.each_with_index do |poem, index| %>
+	    <li><%= link_to poem.body, params.merge( index: index ) %></li>
+	    <% end unless @poems.nil? %>
+	  </ol>
+	<% else %>
     <div id="where-next">
     <%= if @prev_poem_index then link_to 'Previous', poet_path(@poet, index: @prev_poem_index ), { id: 'prev', class: 'poem__nav' } end %>
     <%= if @next_poem_index then link_to 'Next', poet_path(@poet, index: @next_poem_index ), { id: 'next', class: 'poem__nav' } end %>
     </div>
+	<% end %>
 </nav>
 <% end %>
 

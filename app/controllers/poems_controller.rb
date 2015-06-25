@@ -5,21 +5,13 @@ class PoemsController < ApplicationController
 	# GET /poems
 	# GET /poems.json
 	def index
-		# If we get to the index/search results page without a search term, redirect
-		#  to categories.first
-		redirect_to categories_url(Category.first) and return if @search_for.nil?
-
 		@poems = Poem.search( params[ :search_for ] )
 
 		@poem = params[ :index ]?
 			@poems[ params[:index].to_i ]:
 			@poems.first
 
-		@show_list = params[ :index ].nil?
-
-		# cache for later
-		session[ :search_for ] = @search_for
-		session[ :index ] = 0
+		@show_list = params[ :index ].nil? || params[ :list ] == 'true'
 	end
 
 	# GET /poems/1
@@ -27,16 +19,6 @@ class PoemsController < ApplicationController
 	def show
 		@poems = Poem.search( session[:search_for] )
 		current_poem_index = @poems.find_index @poem
-
-		# unless @poems.nil?
-		# 	if current_poem_index + 1 < @poems.size
-		# 		@next_poem = @poems[ current_poem_index + 1 ]
-		# 	end
-
-		# 	if current_poem_index - 1 >= 0
-		# 		@prev_poem = @poems[ current_poem_index - 1 ]
-		# 	end
-		# end # unless
 	end
 
 	# GET /poems/new

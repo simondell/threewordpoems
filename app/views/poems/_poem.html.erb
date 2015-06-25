@@ -10,7 +10,7 @@
     <% if @poem.maximised then %><p class="poem__body"><%= @poem.body %></p><% end %>
     <footer>
       <% if @poem.poet != nil %>
-      by <%= @poem.poet.display_name %>
+      by <%= link_to @poem.poet.display_name, poet_path( @poem.poet, index: @poem.poet.poems.find_index( @poem ), list: true ) %>
       <% end %>
 <!--       |  <%= link_to 'Edit', edit_poem_path(@poem) %> -->
     </footer>
