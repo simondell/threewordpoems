@@ -49,18 +49,22 @@
 		height: $verticals;
 	}
 
-	label[for="poem_title"],
-	label[for="poem_body"] {
-		@extend .hidden-text;
-		display: inline-block;
-	}
-
 	input,,
 	textarea {
 		width: 390px;
 		padding: 0;
 		border: 0;
 		outline: 0;
+	}
+
+	label[for="poem_title"],
+	label[for="poem_body"] {
+		@extend .hidden-text;
+		display: inline-block;
+	}
+
+	input[type="file"] {
+		margin-bottom: $verticals / 2;
 	}
 }
 
