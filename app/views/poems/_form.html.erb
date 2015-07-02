@@ -18,11 +18,11 @@
 		</div>
 		<div class="field">
 			<%= f.label :title, 'title' %>
-			<%= f.text_field :title, placeholder: "this is optional" %>
+			<%= f.text_area :title, placeholder: "Titles are optional, and as long as you like." %>
 		</div>
 		<div class="field">
 			<%= f.label :body, "poem" %>
-			<%= f.text_field :body, placeholder: "Coerce terse verse..." %>
+			<%= f.text_area :body, placeholder: "What goes? Compose!", class: 'poem__body' %>
 		</div>
 		<div class="field">
 			<%= f.label :maximised, "show big?" %>
@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="actions">
-			<%= f.submit  "Make the change" %>
+			<%= f.submit  "Do the thing!" %>
 		</div>
 
 	</div>

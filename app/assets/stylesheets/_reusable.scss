@@ -20,8 +20,8 @@ $z-infront: 2;
 	position: absolute;
 	z-index: $z-infront;
 	padding: 0.5ex 1ex;
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 
 	form & {
 		padding-bottom: 1ex;
@@ -41,4 +41,15 @@ $z-infront: 2;
 			background-color: black;
 			color: white;
 		}
+}
+
+
+/* tools */
+.hidden-text {
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	text-indent: 100%;
+	font-size: 0;
+	white-space: nowrap;
 }

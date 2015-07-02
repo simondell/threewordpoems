@@ -37,21 +37,28 @@
 
 	label,
 	input,
+	textarea,
 	button {
-		height: $verticals;
 		line-height: $verticals;
-		padding: 0 0.5ex;
+		// padding: 0 0.5ex;
 		font-size: 1rem;
 		letter-spacing: normal;
 	}
 
-	label {
-		display: inline-block;
-		width: 70px;
+	button {
+		height: $verticals;
 	}
 
-	input {
+	label[for="poem_title"],
+	label[for="poem_body"] {
+		@extend .hidden-text;
+		display: inline-block;
+	}
+
+	input,,
+	textarea {
 		width: 390px;
+		padding: 0;
 		border: 0;
 		outline: 0;
 	}
