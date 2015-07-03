@@ -1,5 +1,6 @@
 /* grid/rhythm */
-$verticals: 20px;
+$grid: 4px;
+$verticals: $grid * 5;
 
 /* z-indexes */
 $z-behind: 1;
@@ -14,18 +15,6 @@ $z-infront: 2;
 .block-line {
 	height: $verticals;
 	line-height: $verticals;
-}
-
-.boxout {
-	position: absolute;
-	z-index: $z-infront;
-	padding: 0.5ex 1ex;
-	background-color: white;
-	color: black;
-
-	form & {
-		padding-bottom: 1ex;
-	}
 }
 
 .links-in-front {

@@ -17,8 +17,13 @@ class PoemsController < ApplicationController
 	# GET /poems/1
 	# GET /poems/1.json
 	def show
-		@poems = Poem.search( session[:search_for] )
+		@poems = Poem.search( @search_for )
 		current_poem_index = @poems.find_index @poem
+
+		# poems with no image are always maximised
+		@maximised = @poem.image_url ?
+			@poem.maximised :
+			true;
 	end
 
 	# GET /poems/new
@@ -79,7 +84,7 @@ class PoemsController < ApplicationController
 		end
 
 		def set_search_for
-			@search_for = params[:search_for] || session[:search_for] || nil
+			@search_for = params[:search_for] || nil
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.

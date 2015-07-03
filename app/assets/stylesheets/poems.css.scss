@@ -9,16 +9,11 @@
 	width: 960px;
 	height: 720px;
 	z-index: $z-behind;
+background-color: grey;
 
 	h1 {
 		font-size: 1.5rem;
 		line-height: 1;
-	}
-
-	.poem__body {
-		font-size: 3rem;
-		line-height: 1.5;
-		margin-bottom: $verticals;
 	}
 
 	a {
@@ -68,30 +63,60 @@
 	}
 }
 
-	.poem__image {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: $z-behind;
-	}
+.poem__image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: $z-behind;
+}
 
+.poem__text {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: $z-infront;
+	background-color: transparent;
+	color: black;
+
+	form & {
+		padding-bottom: 1ex;
+	}
+}
+
+.poem__title,
+.poem__body,
+.poem__text footer {
+	float: left;
+	clear: both;
+	background-color: white;
+	padding: $grid $grid * 2;
+}
+
+.poem__body {
+	font-size: 3rem;
+	line-height: 1.5;
+}
+
+.poem--editing,
+.poem--maximised {
 	.poem__text {
-		@extend .boxout;
-		left: 0;
-		bottom: 0;
-
-		.poem--editing &,
-		.poem--maximised & {
-			top: 200px;
-			left: 50px;
-			bottom: auto;
-			width: 500px;
-		}
+		top: 200px;
+		left: 50px;
+		bottom: auto;
+		width: 500px;
+		background-color: white;
 	}
 
+	.poem__title,
+	.poem__body,
+	.poem__text footer {
+		float: none;
+		clear: none;
+	}
 
+}
 
 #results {
 	background-color: white;

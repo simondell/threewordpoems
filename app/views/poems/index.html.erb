@@ -2,7 +2,7 @@
 
 <% if @show_list then %>
 <nav id="results">
-  <h1>Found <%= @poems.count unless @poems.nil? %> matches for "<%= session[ :search_for ] %>"</h1>
+  <h1>Found <%= @poems.count unless @poems.nil? %> matches for "<%= @search_for %>"</h1>
   <ol>
     <% @poems.each_with_index do |poem, index| %>
     <li><%= link_to poem.body, params.merge( index: index ) %></li>

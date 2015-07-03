@@ -1,4 +1,4 @@
-<article class="poem<%= ' poem--maximised' if @poem.maximised %>" role="main">
+<article class="poem<%= ' poem--maximised' if @maximised %>" role="main">
   <% if @poem.image_url %>
   <div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
   <% end %>
@@ -7,7 +7,7 @@
     <p id="notice"><%= notice %></p>
 
     <% if @poem.title then %><h1 class="poem__title"><%= @poem.title %></h1><% end %>
-    <% if @poem.maximised then %><p class="poem__body"><%= @poem.body %></p><% end %>
+    <p class="poem__body"><%= @poem.body %></p>
     <footer>
       <% if @poem.poet != nil %>
       by <%= link_to @poem.poet.display_name, poet_path( @poem.poet, index: @poem.poet.poems.find_index( @poem ), list: true ) %>
