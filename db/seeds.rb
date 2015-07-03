@@ -117,7 +117,6 @@ test_poems = [{
 	}]
 
 test_poems.each do |poem|
-  # poem.image = open('http://lorempixel.com/1024/690/abstract')
-  poem[:image] = open('http://lorempixel.com/1024/690/abstract')
+  poem[:image] = open('http://lorempixel.com/1024/768/abstract')
   Poem.create( poem )
 end
