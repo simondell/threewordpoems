@@ -1,1 +1,6 @@
-<div id="site-title" ><a href="/poems" title="Return to the homepage, and show a poem from the Top Ten poems.">Three Word Poems!</a></div>
+<div id="site-title" >
+	<%= link_to 'Three Word Poems!',
+		category_url( Category.first ),
+		title: "Return to the homepage, and show a poem from the Top Ten poems."
+		%>
+</div>
