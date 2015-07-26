@@ -3,13 +3,7 @@
 one:
   display_name: MyString
   email: MyString
-  passwordhash: MyString
-  first_name: MyString
-  last_name: MyString
 
 two:
   display_name: MyString
   email: MyString
-  passwordhash: MyString
-  first_name: MyString
-  last_name: MyString
