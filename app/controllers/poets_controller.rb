@@ -26,7 +26,7 @@ class PoetsController < ApplicationController
       @next_poem_index = current_poem_index + 1
     end
 
-    @search_for = @poet.display_name
+    @search_for = @poet.name
   end
 
 end

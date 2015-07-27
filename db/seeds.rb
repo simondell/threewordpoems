@@ -33,10 +33,10 @@ mythic = Category.create!( {name: "Mythic"} )
 Poet.destroy_all
 
 Poet.create!([{
-	display_name: "Anon",
+	name: "Anon",
 	email: "anon_e_mousse@threewordpoems.com"
 },{
-	display_name: "The Other Dell",
+	name: "The Other Dell",
 	email: "simon@theotherdell.com"
 }])
 
