@@ -68,4 +68,12 @@ class PoetTest < ActiveSupport::TestCase
     end
   end
 
+
+  test 'email addresses should be case-insensitively unique' do
+    cloned_poet = @poet.dup
+    cloned_poet.email = @poet.email.upcase
+    @poet.save
+
+    assert_not cloned_poet.valid?
+  end
 end

@@ -1,4 +1,5 @@
 class Poet < ActiveRecord::Base
+	before_save { self.email = email.downcase }
 
 	has_many :poems
 
@@ -9,5 +10,6 @@ class Poet < ActiveRecord::Base
 	validates :email,
 		presence: true,
 		length: { maximum: 255 },
-		format: { with: VALID_EMAIL_REGEX }
+		format: { with: VALID_EMAIL_REGEX },
+		uniqueness: { case_sensitive: false }
 end
