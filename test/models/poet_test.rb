@@ -3,7 +3,7 @@ require 'test_helper'
 class PoetTest < ActiveSupport::TestCase
 
   def setup
-    @poet = Poet.new name: 'Poet Tester', email: 'nothing@brite.ze'
+    @poet = Poet.new name: 'Poet Tester', email: 'nothing@brite.ze', password: 'foobar', password_confirmation: 'foobar'
   end
 
 
@@ -75,5 +75,19 @@ class PoetTest < ActiveSupport::TestCase
     @poet.save
 
     assert_not cloned_poet.valid?
+  end
+
+
+  test 'password should be present' do
+  	@poet.password = @poet.password_confirmation = ' ' * 6
+
+  	assert_not @poet.valid?
+  end
+
+
+  test 'password should be at least 6 characters' do
+  	@poet.password = @poet.password_confirmation = 'a' * 5
+
+  	assert_not @poet.valid?
   end
 end
