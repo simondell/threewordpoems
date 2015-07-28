@@ -78,6 +78,15 @@ class PoetTest < ActiveSupport::TestCase
   end
 
 
+  test 'emails should be downcased on save' do
+  	mixed_case_email = 'PO_the_poet@STARGAZING.co.UK'
+  	@poet.email = mixed_case_email
+  	@poet.save
+
+  	assert_equal mixed_case_email.downcase, @poet.reload.email
+  end
+
+
   test 'password should be present' do
   	@poet.password = @poet.password_confirmation = ' ' * 6
 

@@ -1,5 +1,5 @@
 class Poet < ActiveRecord::Base
-	before_save { self.email = email.downcase }
+	before_save { email.downcase! }
 
 	has_many :poems
 
