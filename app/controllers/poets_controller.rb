@@ -29,4 +29,9 @@ class PoetsController < ApplicationController
     @search_for = @poet.name
   end
 
+
+  def new
+    @poet = Poet.new
+  end
+
 end

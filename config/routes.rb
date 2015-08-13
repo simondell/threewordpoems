@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :poems
   resources :categories, only: [:show]
-  resources :poets, only: [:show]
+  resources :poets
 
   root to: "categories#show"
 
