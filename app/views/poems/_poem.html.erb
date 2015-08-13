@@ -10,7 +10,7 @@
     <p class="poem__body"><%= @poem.body %></p>
     <footer>
       <% if @poem.poet != nil %>
-      by <%= link_to @poem.poet.name, poet_path( @poem.poet, index: @poem.poet.poems.find_index( @poem ), list: true ) %>
+      by <%= link_to gravatar_for( @poem.poet ), poet_path( @poem.poet, index: @poem.poet.poems.find_index( @poem ), list: true ) %>
       <% end %>
 <!--       |  <%= link_to 'Edit', edit_poem_path(@poem) %> -->
     </footer>
