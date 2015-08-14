@@ -34,4 +34,21 @@ class PoetsController < ApplicationController
     @poet = Poet.new
   end
 
+
+  def create
+    @poet = Poet.new poet_params
+
+    if @poet.save
+      # handle success
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def poet_params
+      params.require(:poet).permit(:name, :email, :passwod, :passwod_confirmation)
+    end
+
 end

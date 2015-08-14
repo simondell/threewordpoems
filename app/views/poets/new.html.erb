@@ -1,4 +1,6 @@
-<%= form_for @poet do |f| %>
+<%= form_for @poet,  html: { class: "poet" } do |f| %>
+
+	<%= render 'shared/error_messages' %>
 
 	<div class="field">
 		<%= f.label :name, "name" %>
