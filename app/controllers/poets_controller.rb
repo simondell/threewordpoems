@@ -39,7 +39,7 @@ class PoetsController < ApplicationController
     @poet = Poet.new poet_params
 
     if @poet.save
-      # handle success
+      redirect_to @poet
     else
       render 'new'
     end
