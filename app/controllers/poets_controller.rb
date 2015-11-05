@@ -11,8 +11,8 @@ class PoetsController < ApplicationController
     @show_list = params[ :index ].nil? || params[ :list ] == 'true'
 
     if params[:index].nil?
-      @poem = @poems.first
       current_poem_index = 0
+      @poem = @poems.first
     else
       current_poem_index = params[:index].to_i
       @poem = @poems[ current_poem_index ]
@@ -39,16 +39,16 @@ class PoetsController < ApplicationController
     @poet = Poet.new poet_params
 
     if @poet.save
+    	flash[:success] = 'Welcome, new poet!'
       redirect_to @poet
     else
       render 'new'
     end
   end
 
-  private
-
-    def poet_params
-      params.require(:poet).permit(:name, :email, :passwod, :passwod_confirmation)
-    end
+private
+  def poet_params
+    params.require(:poet).permit(:name, :email, :password, :password_confirmation)
+  end
 
 end
