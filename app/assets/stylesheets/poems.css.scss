@@ -62,7 +62,7 @@
 	}
 }
 
-.poem__image {
+article > img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -84,7 +84,7 @@
 	}
 }
 
-.poem__title,
+article h1,,
 .poem__body,
 .poem__text footer {
 	float: left;
@@ -108,7 +108,7 @@
 		background-color: white;
 	}
 
-	.poem__title,
+	article h1,,
 	.poem__body,
 	.poem__text footer {
 		float: none;

@@ -1,12 +1,12 @@
 <article class="poem<%= ' poem--maximised' if @maximised %>" role="main">
   <% if @poem.image_url %>
-  <div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
+  <%= image_tag @poem.image_url.to_s %>
   <% end %>
 
   <div class="poem__text">
-    <p id="notice"><%= notice %></p>
+<!--     <p id="notice"><%= notice %></p> -->
 
-    <% if @poem.title then %><h1 class="poem__title"><%= @poem.title %></h1><% end %>
+    <% if @poem.title then %><h1><%= @poem.title %></h1><% end %>
     <p class="poem__body"><%= @poem.body %></p>
     <footer>
       <% if @poem.poet != nil %>
