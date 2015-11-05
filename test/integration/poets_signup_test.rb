@@ -30,15 +30,10 @@ class PoetsSignupTest < ActionDispatch::IntegrationTest
 
 
 
-	test 'valid poet submission creates new poet' do
+	test 'valid poet submission creates new poet and redirects to poet#show' do
 		assert_difference 'Poet.count', 1 do
 			post_via_redirect poets_path, poet: VALID_POET
 		end
 		assert_template 'poets/show'
 	end
-	# test 'successful new poet subission redirects to poet#show' do
-	# 	post poets_path, poet: VALID_POET
-
-	# end
-
 end
