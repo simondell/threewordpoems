@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20150727184608) do
     t.integer  "poet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "image_id"
     t.integer  "colourway_id"
     t.string   "image"
     t.integer  "workflow_step", default: 0
