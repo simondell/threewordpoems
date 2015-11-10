@@ -34,10 +34,14 @@ Poet.destroy_all
 
 Poet.create!([{
 	name: "Anon",
-	email: "anon_e_mousse@threewordpoems.com"
+	email: "anon_e_mousse@threewordpoems.com",
+	password: "anonandon",
+	password_confirmation: "anonandon"
 },{
 	name: "The Other Dell",
-	email: "simon@theotherdell.com"
+	email: "simon@theotherdell.com",
+	password: 'simonsimon',
+	password_confirmation: 'simonsimon'
 }])
 
 anon = Poet.first
