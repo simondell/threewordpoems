@@ -1,4 +1,4 @@
-class RemoveImageIdFromPoem < ActiveRecord::Migration
+class RemoveImageIdFromPoems < ActiveRecord::Migration
   def change
   	remove_column :poems, :image_id, :integer, {}
   end
