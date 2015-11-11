@@ -1,6 +1,9 @@
-<div id="site-title" >
+<header role="banner">
 	<%= link_to 'Three Word Poems!',
 		category_url( Category.first ),
 		title: "Return to the homepage, and show a poem from the Top Ten poems."
 		%>
-</div>
+		<% flash.each do |message_type, message| %>
+			<p class="alert alert-<%= message_type %>"><%= message %></p>
+		<% end %>
+</header>

@@ -55,7 +55,7 @@ a {
 /*
  * Layout
  */
-#site-title {
+[role="banner"] {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -65,12 +65,9 @@ a {
 	background-color: white;
 	color: black;
 
-	&:hover {
-		background-color: yellow;
-	}
-
 	a {
 		&:hover {
+			background-color: yellow;
 			color: blue;
 		}
 	}

@@ -73,4 +73,10 @@ class PoetsSignupTest < ActionDispatch::IntegrationTest
 		end
 		assert_template 'poets/show'
 	end
+
+	test 'valid poet submition generates a flash message in the resulting page' do
+		post_via_redirect poets_path, poet: VALID_POET
+
+		assert_select '[role="banner"] p'
+	end
 end
