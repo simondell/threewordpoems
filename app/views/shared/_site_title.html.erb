@@ -4,6 +4,6 @@
 		title: "Return to the homepage, and show a poem from the Top Ten poems."
 		%>
 		<% flash.each do |message_type, message| %>
-			<p class="alert alert-<%= message_type %>"><%= message %></p>
+			<%= content_tag(:p, message, class: "alert alert-#{message_type}") %>
 		<% end %>
 </header>
