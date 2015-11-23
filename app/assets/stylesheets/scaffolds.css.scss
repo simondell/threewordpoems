@@ -18,12 +18,26 @@ body, h1, h2, h3, h4, h5, h6, ol, dl, ul, dt, dd, li, p {
 }
 
 /*
+ * FONTS
+ */
+html {
+	font-size: $verticals / 1.2;	// 25 x 1.2 = 30px line-height, vertical riddim
+	line-height: 1.2;
+}
+
+body,
+input,
+button,
+textarea {
+	font-family: 'Anonymous Pro', sans-serif;
+}
+
+
+/*
  * Elements
  */
 html {
 	height: 100%;
-	font-size: $verticals / 1.2;	// 25 x 1.2 = 30px line-height, vertical riddim
-	line-height: 1.2;
 }
 
 body {
@@ -33,19 +47,12 @@ body {
 	height: 720px;
 	margin: 0 auto;
 	color: #333;
-	font-family: 'Anonymous Pro', sans-serif;
 	background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-size: 1.5em;
 	line-height: 1;
-}
-
-input,
-button,
-textarea {
-		font-family: 'Anonymous Pro', sans-serif;
 }
 
 a {
@@ -55,22 +62,20 @@ a {
 /*
  * Layout
  */
-#site-title {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: $z-infront;
-	font-size: 1.5rem;
-	line-height: $verticals * 1.5;
-	background-color: white;
-	color: black;
+[role="banner"] {
+	p, nav {
+		background-color: white;
+	}
 
-	&:hover {
-		background-color: yellow;
+	p {
+		font-size: 1.5rem;
+		line-height: $verticals * 1.5;
+		display: inline-block;
 	}
 
 	a {
 		&:hover {
+			background-color: yellow;
 			color: blue;
 		}
 	}
@@ -91,17 +96,20 @@ a {
 	}
 }
 
-#induction {
+header > nav {
 	ol {
-		display: table;
-		width: 100%;
+		overflow: hidden;
 		list-style: none;
-		margin-bottom: $verticals;
 	}
 
 	li {
-		display: table-row;
-		text-align: right;
+		float: left;
+		margin-right: 1ex;
+
+		&:not(:first-child):before {
+			content: "|";
+			padding-right: 1ex;
+		}
 	}
 
 	a {
@@ -110,19 +118,32 @@ a {
 		@extend .links-in-front;
 	}
 
+	form {
+		@extend .block-line;
+		display: inline;
+		padding: 0;
+		margin: 0;
+	}
+
+	[for="search_for"] {
+		display: inline-block;
+		overflow: hidden;
+		width: 0;
+		height: 0;
+		text-indent: 100%;
+	}
+
 	input {
-		@extend .text-box;
+		// @extend .text-box;
 		@extend .links-in-front;
 		@extend .block-line;
-		display: table-cell;
-		border: 0;
 		margin: 0;
-		text-align: right;
+		border: 0;
 		vertical-align: top;
 		width: 8em;
 	}
 
-	input[type="submit"] {
+	[type="submit"] {
 		width: 1em;
 	}
 }
