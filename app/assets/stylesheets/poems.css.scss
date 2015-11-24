@@ -53,7 +53,7 @@
 
 	label[for="poem_title"],
 	label[for="poem_body"] {
-		@extend .hidden-text;
+		@extend .visually-hidden;
 		display: inline-block;
 	}
 

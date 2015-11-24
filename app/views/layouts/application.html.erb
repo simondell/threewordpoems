@@ -10,12 +10,20 @@
 		<%= yield :collection %>
 	</div>
 
+	<% flash.each do |message_type, message| %>
+		<%= content_tag :div, message, class: message_type %>
+	<% end %>
+
 	<%= yield %>
 
 	<footer>
 		<p><a href="#">about</a></p>
 	</footer>
-	<%= debug params if Rails.env.development? %>
+
+	<% if Rails.env.development? %>
+		<hr />
+		<%= debug params  %>
+	<% end %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

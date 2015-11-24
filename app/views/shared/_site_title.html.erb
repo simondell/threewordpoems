@@ -9,12 +9,11 @@
 	<nav><ol>
 		<li><%= link_to "show another poem", '#' %></li>
 		<li><%= link_to "contribute", new_poem_path %></li>
-		<li><a href="#">log in</a></li>
-		<li>
-			<%= form_tag poems_path, method: 'get' do %>
-				<%= label_tag :search_for, 'Search for:' %>
-				<%= text_field_tag :search_for, @category.nil? ? @search_for : '' , placeholder: 'search' %>
-				<%= submit_tag '?' %>
+		<li><a href="/login">log in</a></li>
+		<li><%= form_tag poems_path, method: 'get' do %>
+					<%= label_tag :search_for, 'Search for:' %>
+					<%= text_field_tag :search_for, @category.nil? ? @search_for : '' , placeholder: 'search' %>
+					<%= submit_tag '?' %>
 			<% end %>
 		</li>
 	</ol></nav>
