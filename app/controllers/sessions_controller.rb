@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
   	poet = Poet.find_by email: submitted_email
 
   	if poet && poet.authenticate( submitted_password )
-  		# do stuff
+  		log_in poet
+  		redirect_to poet
   	else
   		flash.now[:danger] = 'Invalid email/password combination'
   		render 'new'

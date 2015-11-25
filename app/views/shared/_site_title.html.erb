@@ -9,7 +9,13 @@
 	<nav><ol>
 		<li><%= link_to "show another poem", '#' %></li>
 		<li><%= link_to "contribute", new_poem_path %></li>
-		<li><a href="/login">log in</a></li>
+
+		<% if logged_in? %>
+		<li><%= link_to "log out", logout_path, method: :delete %></li>
+		<% else %>
+		<li><%= link_to "log in", login_path %></li>
+		<% end %>
+
 		<li><%= form_tag poems_path, method: 'get' do %>
 					<%= label_tag :search_for, 'Search for:' %>
 					<%= text_field_tag :search_for, @category.nil? ? @search_for : '' , placeholder: 'search' %>
