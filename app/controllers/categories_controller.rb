@@ -2,11 +2,11 @@ class CategoriesController < ApplicationController
 	DEFAULT_CATEGORY = Category.first
 
 	def show
-		if params[:id].nil?
-			redirect_to action: "show", id: DEFAULT_CATEGORY.id and return
-		end
+		# if params[:id].nil?
+		# 	redirect_to action: "show", id: DEFAULT_CATEGORY.id and return
+		# end
 
-		@category = Category.find(params[:id])
+		@category = params[:id].nil? ? DEFAULT_CATEGORY : Category.find( params[:id] )
 		@poems = @category.poems
 
 		# find a way to modularise this to share between poems, poets, categories

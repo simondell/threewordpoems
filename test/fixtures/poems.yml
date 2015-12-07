@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyString
-  poet_id: 1
+  title: test a poem
+  body: this poem works
+  poet: tutorial
 
 two:
-  title: MyString
-  body: MyString
-  poet_id: 1
+  title: this is my poem
+  body: three word poem
+  poet: simon

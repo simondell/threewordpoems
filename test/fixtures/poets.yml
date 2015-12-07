@@ -8,10 +8,10 @@
 #   name: Anon
 #   email: ANON_E_MOUSSE@threewordpoems.com
 
-# simon:
-#   name: The Other Dell
-#   email: simon@theotherdell.com
-#   password_digest: <%= Poet.digest 'simonsimon' %>
+simon:
+  name: The Other Dell
+  email: simon@theotherdell.com
+  password_digest: <%= Poet.digest 'simonsimon' %>
 
 tutorial:
   name: Splat Gum

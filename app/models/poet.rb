@@ -1,4 +1,6 @@
 class Poet < ActiveRecord::Base
+	attr_accessor :remember_token
+
 	before_save { email.downcase! }
 
 	has_many :poems
@@ -22,9 +24,34 @@ class Poet < ActiveRecord::Base
 	has_secure_password
 
 	# Returns the hash digest of the given string.
-	def self.digest(string)
-		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-																									BCrypt::Engine.cost
-		BCrypt::Password.create(string, cost: cost)
+	def self.digest string
+		cost = ActiveModel::SecurePassword.min_cost ?
+			BCrypt::Engine::MIN_COST :
+			BCrypt::Engine.cost
+
+		BCrypt::Password.create string, cost: cost
+	end
+
+	def self.new_token
+		SecureRandom.urlsafe_base64
+	end
+
+	def remember
+		self.remember_token = Poet.new_token
+		digested_token = Poet.digest self.remember_token
+
+		update_attribute :remember_digest, digested_token
+	end
+
+	def forget
+		update_attribute :remember_digest, nil
+	end
+
+	def authenticated? remember_token
+		return false if remember_digest.nil?
+
+		digest = BCrypt::Password.new remember_digest
+
+		digest.is_password? remember_token
 	end
 end
