@@ -3,7 +3,7 @@ require 'test_helper'
 class PoetsLoginTest < ActionDispatch::IntegrationTest
 
 	def setup
-		@poet = poets(:tutorial)
+		@poet = poets :tutorial
 	end
 
 	test 'log in with invalid information' do
@@ -43,4 +43,13 @@ class PoetsLoginTest < ActionDispatch::IntegrationTest
 		# assert_select "a[href=?]", logout_path,      count: 0
 	end
 
+	test "login with remembering" do
+		log_in_as @poet, remember_me: '1'
+		assert_not_nil cookies['remember_token']
+	end
+
+	test "login without remembering" do
+		log_in_as @poet, remember_me: '0'
+		assert_nil cookies['remember_token']
+	end
 end
