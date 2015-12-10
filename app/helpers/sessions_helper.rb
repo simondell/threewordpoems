@@ -16,9 +16,6 @@ module SessionsHelper
 	end
 
 	def current_poet
-		# poet_in_session = session[:poet_id]
-		# @current_poet ||= Poet.find_by id: poet_in_session
-
     if (poet_id = session[:poet_id])
       @current_poet ||= Poet.find_by(id: poet_id)
     elsif (poet_id = cookies.signed[:poet_id])

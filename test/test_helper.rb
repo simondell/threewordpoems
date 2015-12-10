@@ -25,7 +25,7 @@ class ActiveSupport::TestCase
 				remember_me: remember_me
 			}
 		else
-			session[:user_id] = user.id
+			session[:poet_id] = poet.id
 		end
 	end
 
