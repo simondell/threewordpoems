@@ -115,8 +115,3 @@ test_poems = [{
   categories: [mythic],
   workflow_step: 2
 	}]
-
-test_poems.each do |poem|
-  poem[:image] = open('http://lorempixel.com/1024/768/abstract')
-  Poem.create( poem )
-end
