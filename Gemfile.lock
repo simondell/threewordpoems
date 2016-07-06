@@ -35,11 +35,6 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     coderay (1.1.0)
@@ -137,7 +132,6 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
-    rmagick (2.13.4)
     ruby-progressbar (1.7.5)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -180,7 +174,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug (= 3.4.0)
-  carrierwave
   coffee-rails (~> 4.0.0)
   guard-minitest (= 2.3.1)
   jbuilder (~> 2.0)
@@ -191,7 +184,6 @@ DEPENDENCIES
   puma (= 2.11.1)
   rails (= 4.1.6)
   rails_12factor (= 0.0.2)
-  rmagick
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

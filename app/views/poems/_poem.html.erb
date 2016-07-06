@@ -1,6 +1,4 @@
 <article class="poem<%= ' poem--maximised' if @maximised %>" role="main">
-	<%= image_tag @poem.image.url.to_s unless @poem.image.nil? %>
-
 	<div class="poem__text">
 		<% if @poem.title then %><h1><%= @poem.title %></h1><% end %>
 		<p class="poem__body"><%= @poem.body %></p>

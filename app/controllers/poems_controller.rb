@@ -19,11 +19,6 @@ class PoemsController < ApplicationController
 	def show
 		@poems = Poem.search( @search_for )
 		current_poem_index = @poems.find_index @poem
-
-		# poems with no image are always maximised
-		@maximised = @poem.image_url ?
-			@poem.maximised :
-			true;
 	end
 
 	# GET /poems/new
@@ -94,7 +89,6 @@ class PoemsController < ApplicationController
 				:body,
 				:poet_id,
 				{category_ids: []},
-				:image,
 				:maximised
 			)
 		end

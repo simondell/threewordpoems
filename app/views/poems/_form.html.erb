@@ -13,10 +13,6 @@
 		<% end %>
 
 		<div class="field">
-			<%= f.label :image, "image" %>
-			<%= f.file_field :image %>
-		</div>
-		<div class="field">
 			<%= f.label :title, "title" %>
 			<%= f.text_area :title, placeholder: "Titles are optional, and as long as you like." %>
 		</div>
@@ -34,9 +30,5 @@
 		</div>
 
 	</div>
-
-	<% if @poem.image_url %>
-	<div class="poem__image"><%= image_tag @poem.image_url.to_s %></div>
-	<% end %>
 
 <% end %>

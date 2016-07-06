@@ -8,9 +8,6 @@ class Poem < ActiveRecord::Base
 	# enums
 	enum workflow_step: [ :unsaved, :submitted, :published, :edited ]
 
-	# extras
-	mount_uploader :image, PoemImageUploader # adds image uploading
-
 	# scopes
 	scope :categorise_by, -> ( category_name ) { joins( :categories ).where( 'categories.name = ?', category_name ) if category_name.present? }
 	scope :search, -> ( keyword ) { where('keywords LIKE ?', "%#{keyword.downcase}%") if keyword.present? }
