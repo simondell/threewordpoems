@@ -11,4 +11,9 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get styleguide" do
+    get static_pages_styleguide_url
+    assert_response :success
+  end
+
 end
