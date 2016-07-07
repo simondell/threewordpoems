@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# ignore rbenv (although ideally this would be a host setting)
+.ruby-version
+
 # Ignore bundler config.
 /.bundle
 
