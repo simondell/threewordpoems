@@ -23,3 +23,6 @@
 
 # Ignore seed images and upload tests
 public/uploads/
+
+# Ignore Spring files.
+/spring/*.pid
