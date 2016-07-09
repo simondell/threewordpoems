@@ -8,8 +8,22 @@
   </head>
 
   <body>
-    <h1><%= yield :page_title %></h1>
+		<header>
+			<p><%= link_to 'Three Word Poems', '#' %></p>
+			<nav>
+			</nav>
+		</header>
+
     <%= yield %>
+
+		<footer>
+				<p>Copyleft ThreeWordPoems</p>
+				<ol>
+					<li><%= link_to 'home', '#' %></li>
+					<li><%= link_to 'about', '#' %></li>
+					<li><%= link_to 'contact', '#' %></li>
+				</ol>
+		</footer>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
