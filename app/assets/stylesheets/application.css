@@ -10,6 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize.css
  *= require_tree .
  *= require_self
  */
+
+html {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1;
+}
+
+body {
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+main {
+  background-color: #ddd;
+}

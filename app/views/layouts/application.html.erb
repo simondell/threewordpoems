@@ -8,24 +8,25 @@
   </head>
 
   <body>
-		<header>
-			<p><%= link_to 'Three Word Poems', '#' %></p>
-			<nav>
-			</nav>
-		</header>
+    <header>
+      <p><%= link_to 'Three Word Poems', '#' %></p>
+      <nav>
+      </nav>
+    </header>
 
-		<main role="main">
-	    <%= yield %>
-		</main>
+    <main role="main">
+      <h1><%= yield :title %></h1>
+      <%= yield %>
+    </main>
 
-		<footer>
-				<p>Copyleft ThreeWordPoems</p>
-				<ol>
-					<li><%= link_to 'home', '#' %></li>
-					<li><%= link_to 'about', '#' %></li>
-					<li><%= link_to 'contact', '#' %></li>
-				</ol>
-		</footer>
+    <footer>
+        <p>Copyleft ThreeWordPoems</p>
+        <ol>
+          <li><%= link_to 'home', '#' %></li>
+          <li><%= link_to 'about', '#' %></li>
+          <li><%= link_to 'contact', '#' %></li>
+        </ol>
+    </footer>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
