@@ -2,31 +2,21 @@
 <html>
   <head>
     <title><%= full_title yield :page_title %></title>
+    <meta name="viewport" content="width=device-width"
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <p><%= link_to 'Three Word Poems', '#' %></p>
-      <nav>
-      </nav>
-    </header>
+    <%= render "shared/header" %>
 
     <main role="main">
       <h1><%= yield :page_title %></h1>
       <%= yield %>
     </main>
 
-    <footer>
-        <p>Copyleft ThreeWordPoems</p>
-        <ol>
-          <li><%= link_to 'home', '#' %></li>
-          <li><%= link_to 'about', '#' %></li>
-          <li><%= link_to 'contact', '#' %></li>
-        </ol>
-    </footer>
+    <%= render "shared/footer" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
