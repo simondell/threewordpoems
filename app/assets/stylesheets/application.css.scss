@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require normalize.css
+ *= require_tree .
+ *= require_self
+ */
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: 479px) { @content; }
+  }
+  @else if $media == wide-handhelds {
+    @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
+  }
+  @else if $media == tablets {
+    @media only screen and (min-width: 768px) and (max-width: 959px) { @content; }
+  }
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+  line-height: 1;
+}
+
+body {
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+
+  @include respond-to(handhelds) { width: 100%; }
+  @include respond-to(wide-handhelds) { width: 100%; }
+}
+
+main {
+  background-color: #ddd;
+}
+
+header,
+main,
+footer {
+  @include respond-to(handhelds) {
+    padding: 0 10px;
+  }
+}

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title yield :title %></title>
+    <title><%= full_title yield :page_title %></title>
+    <meta name="viewport" content="width=device-width"
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <h1><%= yield :title %></h1>
-    <%= yield %>
+    <%= render "shared/header" %>
+
+    <main role="main">
+      <h1><%= yield :page_title %></h1>
+      <%= yield %>
+    </main>
+
+    <%= render "shared/footer" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
