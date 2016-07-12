@@ -7,6 +7,6 @@ class PoetsSignUpTest < ActionDispatch::IntegrationTest
 
   test 'Can see sign-up page' do
     get signup_path
-    assert_select 'title', 'Three Word Poems - Sign up'
+    assert_select 'title', full_title('Sign up')
   end
 end
