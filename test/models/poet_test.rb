@@ -6,10 +6,12 @@ class PoetTest < ActiveSupport::TestCase
     @poet = Poet.new name: 'The testing poet', email: 'three_word_tester@threewordpoems.com'
   end
 
-  test 'should be valid' do
+  test 'poet should be valid' do
     assert @poet.valid?
   end
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test 'another_poet should be valid' do
+    another_poet = Poet.new
+    assert another_poet.valid?
+  end
 end
