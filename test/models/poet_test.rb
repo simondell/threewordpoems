@@ -16,7 +16,7 @@ class PoetTest < ActiveSupport::TestCase
   # end
 
   # name constraints
-  test 'poet.name cant be empty' do
+  test 'name cant be empty' do
     @poet.name = '    '
     assert_not @poet.valid?
   end
@@ -27,8 +27,33 @@ class PoetTest < ActiveSupport::TestCase
   end
 
   # email constraints
-  test 'poet.email cant be empty' do
+  test 'email cant be empty' do
     @poet.email = '    '
     assert_not @poet.valid?
   end
+
+  test 'emails validation should accept valid addresses' do
+    %w[
+      user@example.com
+      USER@foo.COM
+      A_US-ER@foo.bar.org
+      first.last@foo.jp alice+bob@baz.cn
+    ].each do |valid_address|
+      @poet.email = valid_address
+      assert @poet.valid?, "#{valid_address.inspect} should be valid"
+    end
+  end
+
+  test 'emails validation should reject invalid addresses' do
+    %w[
+      user@example,com
+      user_at_foo.org
+      user.name@example.
+      foo@bar_baz.com foo@bar+baz.com
+    ].each do |invalid_address|
+      @poet.email = invalid_address
+      assert_not @poet.valid?, "#{invalid_address.inspect} should not be valid"
+    end
+  end
+
 end
