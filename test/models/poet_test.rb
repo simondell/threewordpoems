@@ -37,7 +37,8 @@ class PoetTest < ActiveSupport::TestCase
       user@example.com
       USER@foo.COM
       A_US-ER@foo.bar.org
-      first.last@foo.jp alice+bob@baz.cn
+      first.last@foo.jp
+      alice+bob@baz.cn
     ].each do |valid_address|
       @poet.email = valid_address
       assert @poet.valid?, "#{valid_address.inspect} should be valid"
@@ -49,7 +50,9 @@ class PoetTest < ActiveSupport::TestCase
       user@example,com
       user_at_foo.org
       user.name@example.
-      foo@bar_baz.com foo@bar+baz.com
+      foo@bar_baz.com
+      foo@bar+baz.com
+      foo@bar..com
     ].each do |invalid_address|
       @poet.email = invalid_address
       assert_not @poet.valid?, "#{invalid_address.inspect} should not be valid"
