@@ -62,4 +62,11 @@ class PoetTest < ActiveSupport::TestCase
     @poet.save
     assert_not duplicate_poet.valid?
   end
+
+  test 'emails should be downcased' do
+    mixed_cased_email = 'mIxEd_CaSe@EmA.iL'
+    @poet.email = mixed_cased_email
+    @poet.save
+    assert_equal mixed_cased_email.downcase, @poet.reload.email
+  end
 end
