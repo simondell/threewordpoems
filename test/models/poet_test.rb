@@ -74,4 +74,15 @@ class PoetTest < ActiveSupport::TestCase
     @poet.save
     assert_equal mixed_cased_email.downcase, @poet.reload.email
   end
+
+  # password tests
+  test 'password should be present (non-blank)' do
+    @poet.password = @poet.password_confirmation = ' ' * 6
+    assert_not @poet.valid?
+  end
+
+  test 'passwords should be at least 6 characters' do
+    @poet.password = @poet.password_confirmation = 'phive'
+    assert_not @poet.valid?
+  end
 end
