@@ -3,7 +3,12 @@ require 'test_helper'
 class PoetTest < ActiveSupport::TestCase
 
   def setup
-    @poet = Poet.new name: 'The testing poet', email: 'three_word_tester@threewordpoems.com'
+    @poet = Poet.new({
+      name: 'The testing poet',
+      email: 'three_word_tester@threewordpoems.com',
+      password: 'foobar',
+      password_confirmation: 'foobar',
+    })
   end
 
   test 'poet should be valid' do
