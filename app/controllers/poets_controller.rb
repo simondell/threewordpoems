@@ -1,5 +1,6 @@
 class PoetsController < ApplicationController
   def new
+    @poet = Poet.new
   end
 
   def show
