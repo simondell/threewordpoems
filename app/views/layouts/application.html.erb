@@ -17,6 +17,10 @@
     </main>
 
     <%= render "shared/footer" %>
+		<% if Rails.env.development? %>
+			<hr />
+			<%= debug params %>
+		<% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
