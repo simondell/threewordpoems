@@ -14,7 +14,7 @@ class Poet < ApplicationRecord
 
   validates :password,
     presence: true,
-    length: { minimum: 6 }
+    length: { minimum: 5 }
 
   has_secure_password
 end
