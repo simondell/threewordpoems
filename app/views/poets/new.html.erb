@@ -1,19 +1,21 @@
 <% provide(:page_title, 'Sign up') %>
 <%= form_for @poet do |f| %>
-<h2>Best foot foward</h2>
-<%= render 'shared/error_messages' %>
-<p>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</p><p>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-</p><p>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-</p><p>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-</p>
-<p><%= f.submit 'Create my account' %></p>
+<section>
+  <h2>Best foot foward</h2>
+  <%= render 'shared/error_messages' %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p><p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p><p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p><p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p><%= f.submit 'Create my account' %></p>
+</section>
 <% end %>

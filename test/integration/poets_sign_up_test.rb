@@ -18,5 +18,8 @@ class PoetsSignUpTest < ActionDispatch::IntegrationTest
         }
       }}
     end
+
+    assert_select '.field_with_errors'
+    assert_select 'form section > h3'
   end
 end

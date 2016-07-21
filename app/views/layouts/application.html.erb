@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= full_title yield :page_title %></title>
-    <meta name="viewport" content="width=device-width"
+    <meta name="viewport" content="width=device-width">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +11,7 @@
   <body>
     <%= render "shared/header" %>
 
-    <main role="main">
+    <main>
       <h1><%= yield :page_title %></h1>
       <%= yield %>
     </main>
