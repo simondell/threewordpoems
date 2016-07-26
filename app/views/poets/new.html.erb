@@ -1,5 +1,5 @@
 <% provide(:page_title, 'Sign up') %>
-<%= form_for @poet do |f| %>
+<%= form_for @poet, url: signup_path do |f| %>
 <section>
   <h2>Best foot foward</h2>
   <%= render 'shared/error_messages' %>
