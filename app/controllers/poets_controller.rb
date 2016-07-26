@@ -2,7 +2,7 @@ class PoetsController < ApplicationController
   def create
     @poet = Poet.new user_params
     if @poet.save
-      # handle successful save
+      redirect_to @poet
     else
       render 'new'
     end
