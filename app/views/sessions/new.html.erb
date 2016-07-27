@@ -1,0 +1,16 @@
+<% provide(:page_title, 'Log in') %>
+<%= form_for :session, url: login_path do |f| %>
+<section>
+  <h2>Come ye hither...</h2>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p><p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p><%= f.submit 'Log me in!' %></p>
+
+  <p><i>New Poet? <%= link_to 'Sign up here', signup_path %></i></p>
+</section>
+<% end %>
