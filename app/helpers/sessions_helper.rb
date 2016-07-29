@@ -12,4 +12,9 @@ module SessionsHelper
     !current_poet.nil?
   end
 
+  def log_out
+    session.delete :poet_id
+    @current_poet = nil
+  end
+
 end
