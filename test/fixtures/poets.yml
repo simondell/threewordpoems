@@ -1,1 +1,4 @@
-# This file left intentionally blank
+test_poet:
+  name: Hester The Tester
+  email: hester@threewordpoems.com
+  password_digest: <%= Poet.digest 'password' %>

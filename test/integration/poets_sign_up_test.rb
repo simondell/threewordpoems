@@ -9,14 +9,14 @@ class PoetsSignUpTest < ActionDispatch::IntegrationTest
 
   test 'do not register invalid poet sign-ups' do
     assert_no_difference 'Poet.count' do
-      post signup_path, { params: {
+      post signup_path, params: {
         poet: {
           name: '',
           email: 'poet@nowhere',
           password: 'nope',
           password_confirmation: 'really',
         }
-      }}
+      }
     end
 
     assert_select 'form[action="/signup"]'
@@ -26,17 +26,18 @@ class PoetsSignUpTest < ActionDispatch::IntegrationTest
 
   test 'register valid sign-ups' do
     assert_difference 'Poet.count', 1 do
-      post signup_path, { params: {
+      post signup_path, params: {
         poet: {
           name: 'Spirit in the Sky',
           email: 'the_best@pla.ce',
           password: 'spritualsky',
           password_confirmation: 'spritualsky'
         }
-      }}
+      }
     end
     follow_redirect!
     assert_template 'poets/show'
     assert_not flash.empty?
+    assert is_logged_in?
   end
 end

@@ -2,6 +2,7 @@ class PoetsController < ApplicationController
   def create
     @poet = Poet.new user_params
     if @poet.save
+      log_in @poet
       flash[:success] = "Welcome to the gang, #{@poet.name}"
       redirect_to poet_url @poet
     else

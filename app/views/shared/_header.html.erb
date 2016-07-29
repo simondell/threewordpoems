@@ -2,7 +2,13 @@
   <p><%= link_to 'Three Word Poems', root_path %></p>
   <nav>
 		<ol>
-			<li><%= link_to	'Sign up here', signup_path %></li>
+    <% if logged_in? %>
+      <li><%= link_to 'My poems', current_poet %></li>
+      <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+    <% else %>
+			<li><%= link_to	'Sign up here', signup_path %>, or</li>
+      <li><%= link_to 'Log in', login_path %></li>
+    <% end %>
 		</ol>
   </nav>
 </header>
