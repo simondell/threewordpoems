@@ -1,4 +1,6 @@
 class Poet < ApplicationRecord
+  attr_accessor :remember_token
+
   before_save { email.downcase! }
 
   validates :name,
@@ -18,11 +20,25 @@ class Poet < ApplicationRecord
 
   has_secure_password
 
-  def Poet.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ?
-      BCrypt::Engine::MIN_COST :
-      BCrypt::Engine.cost
 
-    BCrypt::Password.create(string, cost: cost)
+  class << self
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ?
+        BCrypt::Engine::MIN_COST :
+        BCrypt::Engine.cost
+
+      BCrypt::Password.create(string, cost: cost)
+    end
+
+    # Returns a random token.
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+  end
+
+  def remember
+    self.remember_token = Poet.new_token
+    digested_token = Poet.digest remember_token
+    update_attribute :remember_digest, digested_token
   end
 end
