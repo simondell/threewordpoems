@@ -20,6 +20,20 @@ class Poet < ApplicationRecord
 
   has_secure_password
 
+  def authenticated? remember_token
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attribute :remember_digest, nil
+  end
+
+  def remember
+    self.remember_token = Poet.new_token
+    digested_token = Poet.digest remember_token
+    update_attribute :remember_digest, digested_token
+  end
 
   class << self
     def digest(string)
@@ -34,11 +48,5 @@ class Poet < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
-  end
-
-  def remember
-    self.remember_token = Poet.new_token
-    digested_token = Poet.digest remember_token
-    update_attribute :remember_digest, digested_token
   end
 end

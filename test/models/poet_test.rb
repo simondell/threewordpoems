@@ -85,4 +85,8 @@ class PoetTest < ActiveSupport::TestCase
     @poet.password = @poet.password_confirmation = 'phive'
     assert_not @poet.valid?
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @poet.authenticated?('')
+  end
 end

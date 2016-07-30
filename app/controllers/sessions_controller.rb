@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     poet = Poet.find_by( email: params[:session][:email].downcase )
     if poet && poet.authenticate( params[:session][:password] )
       log_in poet
+      remember poet
       redirect_to poet
     else
       flash.now[:error] = 'Do it again!!'
@@ -11,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 
