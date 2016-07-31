@@ -3,7 +3,11 @@ class SessionsController < ApplicationController
     poet = Poet.find_by( email: params[:session][:email].downcase )
     if poet && poet.authenticate( params[:session][:password] )
       log_in poet
-      remember poet
+      if params[:session][:remember_me] == '1'
+        remember poet
+      else
+        forget poet
+      end
       redirect_to poet
     else
       flash.now[:error] = 'Do it again!!'
