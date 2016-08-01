@@ -48,7 +48,8 @@ class PoetLoginTest < ActionDispatch::IntegrationTest
   # remember me tests
   test "login with remembering" do
     log_in_as @poet, remember_me: '1'
-    assert_not_nil cookies['remember_token']
+    # assert_not_nil cookies['remember_token']
+    assert_equal cookies['remember_token'], assigns(:poet).remember_token
   end
 
   test "login without remembering" do
