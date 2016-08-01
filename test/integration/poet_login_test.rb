@@ -44,4 +44,15 @@ class PoetLoginTest < ActionDispatch::IntegrationTest
     get root_path
     assert flash.empty?
   end
+
+  # remember me tests
+  test "login with remembering" do
+    log_in_as @poet, remember_me: '1'
+    assert_not_nil cookies['remember_token']
+  end
+
+  test "login without remembering" do
+    log_in_as @poet, remember_me: '0'
+    assert_nil cookies['remember_token']
+  end
 end
