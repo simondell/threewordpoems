@@ -1,24 +1,7 @@
 <% provide(:page_title, 'Edit your info') %>
-<%= form_for @poet, url: signup_path do |f| %>
+<% provide(:button_text, 'Keep my changes') %>
+<%= render 'poet_form' %>
 <section>
   <%= gravatar_for @poet %>
 	<%= link_to 'change', 'http://gravatar.com/emails', rel: 'noopener', target: '_blank' %>
 </section>
-<section>
-  <%= render 'shared/error_messages' %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p><p>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </p><p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p><p>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.submit 'Save my changes' %></p>
-</section>
-<% end %>
