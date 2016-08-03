@@ -10,6 +10,10 @@ class PoetsController < ApplicationController
     end
   end
 
+  def edit
+    @poet = Poet.find params[:id]
+  end
+
   def new
     @poet = Poet.new
   end
