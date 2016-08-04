@@ -1,4 +1,6 @@
 class PoetsController < ApplicationController
+  before_action :logged_in_poet, only: [:edit, :update]
+
   def create
     @poet = Poet.new user_params
     if @poet.save
@@ -35,9 +37,15 @@ class PoetsController < ApplicationController
 
 
 private
+  def logged_in_poet
+    unless logged_in?
+      flash[:error] = 'Please log in'
+      redirect_to login_url
+    end
+  end
+
   def user_params
     required = params.require :poet
     required.permit(:name, :email, :password, :password_confirmation)
   end
-
 end

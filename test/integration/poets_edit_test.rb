@@ -6,6 +6,7 @@ class PoetsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'unsuccessful edit' do
+    log_in_as @poet
     get edit_poet_path @poet
 
     assert_template 'poets/edit'
@@ -22,6 +23,7 @@ class PoetsEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'successful edit' do
+    log_in_as @poet
     get edit_poet_path @poet
 
     assert_template 'poets/edit'
