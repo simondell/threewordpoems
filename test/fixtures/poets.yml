@@ -2,3 +2,9 @@ test_poet:
   name: Hester The Tester
   email: hester@threewordpoems.com
   password_digest: <%= Poet.digest 'password' %>
+
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= Poet.digest('password') %>

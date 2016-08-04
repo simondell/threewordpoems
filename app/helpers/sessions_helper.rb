@@ -12,6 +12,10 @@ module SessionsHelper
     end
   end
 
+  def current_poet? poet
+    poet == current_poet
+  end
+
   def forget poet
     poet.forget
     cookies.delete :poet_id

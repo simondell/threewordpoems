@@ -1,5 +1,6 @@
 class PoetsController < ApplicationController
   before_action :logged_in_poet, only: [:edit, :update]
+  before_action :correct_poet, only: [:edit, :update]
 
   def create
     @poet = Poet.new user_params
@@ -37,6 +38,11 @@ class PoetsController < ApplicationController
 
 
 private
+  def correct_poet
+    @poet = Poet.find params[:id]
+    redirect_to(root_url) unless current_poet? @poet
+  end
+
   def logged_in_poet
     unless logged_in?
       flash[:error] = 'Please log in'
