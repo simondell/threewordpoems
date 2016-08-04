@@ -22,6 +22,17 @@ class PoetsController < ApplicationController
     @poet = Poet.find params[:id]
   end
 
+  def update
+    @poet = Poet.find params[:id]
+
+    if @poet.update_attributes user_params
+      # do stuff
+    else
+      render 'edit'
+    end
+  end
+
+
 private
   def user_params
     required = params.require :poet
