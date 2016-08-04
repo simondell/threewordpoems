@@ -22,11 +22,11 @@ class PoetsEditTest < ActionDispatch::IntegrationTest
     assert_select 'form > section > ul > li', count: 4
   end
 
-  test 'successful edit' do
-    log_in_as @poet
+  test 'successful edit with friendly forwarding' do
     get edit_poet_path @poet
+    log_in_as @poet
 
-    assert_template 'poets/edit'
+    assert_redirected_to edit_poet_path @poet
 
     name = 'Foo Barr'
     email = 'foo@bar.com'
