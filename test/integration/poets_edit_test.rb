@@ -24,9 +24,11 @@ class PoetsEditTest < ActionDispatch::IntegrationTest
 
   test 'successful edit with friendly forwarding' do
     get edit_poet_path @poet
-    log_in_as @poet
+    assert_not_nil session[:forwarding_url]
 
+    log_in_as @poet
     assert_redirected_to edit_poet_path @poet
+    assert_nil session[:forwarding_url]
 
     name = 'Foo Barr'
     email = 'foo@bar.com'
@@ -37,9 +39,9 @@ class PoetsEditTest < ActionDispatch::IntegrationTest
       password: empty_password,
       password_confirmation: empty_password
     }
-
     assert_not flash.empty?
     assert_redirected_to @poet
+
     @poet.reload
     assert_equal name, @poet.name
     assert_equal email, @poet.email
