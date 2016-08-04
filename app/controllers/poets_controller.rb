@@ -26,7 +26,8 @@ class PoetsController < ApplicationController
     @poet = Poet.find params[:id]
 
     if @poet.update_attributes user_params
-      # do stuff
+      flash[:success] = 'Profile updated'
+      redirect_to @poet
     else
       render 'edit'
     end
