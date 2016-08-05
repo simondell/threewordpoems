@@ -1,4 +1,5 @@
 class PoetsController < ApplicationController
+  before_action :set_poet, only: [:show, :edit, :update]
   before_action :logged_in_poet, only: [:edit, :index, :update]
   before_action :correct_poet, only: [:edit, :update]
 
@@ -14,7 +15,6 @@ class PoetsController < ApplicationController
   end
 
   def edit
-    @poet = Poet.find params[:id]
   end
 
   def index
@@ -26,12 +26,9 @@ class PoetsController < ApplicationController
   end
 
   def show
-    @poet = Poet.find params[:id]
   end
 
   def update
-    @poet = Poet.find params[:id]
-
     if @poet.update_attributes user_params
       flash[:success] = 'Profile updated'
       redirect_to @poet
@@ -43,8 +40,11 @@ class PoetsController < ApplicationController
 
 private
   def correct_poet
+    redirect_to root_url unless current_poet? @poet
+  end
+
+  def set_poet
     @poet = Poet.find params[:id]
-    redirect_to(root_url) unless current_poet? @poet
   end
 
   def logged_in_poet
@@ -57,6 +57,11 @@ private
 
   def user_params
     required = params.require :poet
-    required.permit(:name, :email, :password, :password_confirmation)
+    required.permit [
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    ]
   end
 end

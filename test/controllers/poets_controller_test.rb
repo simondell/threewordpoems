@@ -51,4 +51,15 @@ class PoetsControllerTest < ActionDispatch::IntegrationTest
     assert flash.empty?
     assert_redirected_to root_url
   end
+
+  test 'should disallow setting editor property via the web' do
+    log_in_as @test_poet_2
+    assert_not @test_poet_2.editor?
+    patch poet_path( @test_poet_2 ), params: { poet: {
+      password: 'password',
+      password_confirmation: 'password',
+      editor: true
+    }}
+    assert_not @test_poet_2.reload.editor?
+  end
 end
