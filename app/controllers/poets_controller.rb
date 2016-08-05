@@ -1,5 +1,5 @@
 class PoetsController < ApplicationController
-  before_action :logged_in_poet, only: [:edit, :update]
+  before_action :logged_in_poet, only: [:edit, :index, :update]
   before_action :correct_poet, only: [:edit, :update]
 
   def create
@@ -15,6 +15,10 @@ class PoetsController < ApplicationController
 
   def edit
     @poet = Poet.find params[:id]
+  end
+
+  def index
+    @poets = Poet.all
   end
 
   def new

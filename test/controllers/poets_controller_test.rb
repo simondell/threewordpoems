@@ -18,6 +18,11 @@ class PoetsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test 'should redirect index when not logged in' do
+    get poets_path
+    assert_redirected_to login_url
+  end
+
   test 'should redirect update when not logged in' do
     patch poet_path @test_poet_1, params: { poet: {
       name: @test_poet_1.name,
