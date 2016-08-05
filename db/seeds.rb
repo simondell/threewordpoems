@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Poet.create!({
+  name:  "Example User",
+  email: "example@railstutorial.org",
+  password: "foobar",
+  password_confirmation: "foobar"
+})
+
+99.times do |i|
+  Poet.create!({
+    name: Faker::Name.name,
+    email: "example-#{i+1}@railstutorial.org",
+    password: 'password',
+    password_confirmation: 'password',
+  })
+end
