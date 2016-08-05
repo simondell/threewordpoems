@@ -18,7 +18,7 @@ class PoetsController < ApplicationController
   end
 
   def index
-    @poets = Poet.all
+    @poets = Poet.paginate page: params[:page]
   end
 
   def new

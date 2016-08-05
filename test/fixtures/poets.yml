@@ -3,8 +3,24 @@ test_poet:
   email: hester@threewordpoems.com
   password_digest: <%= Poet.digest 'password' %>
 
-
 archer:
   name: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= Poet.digest('password') %>
+
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= Poet.digest('password') %>
+
+malory:
+  name: Malory Archer
+  email: boss@example.gov
+  password_digest: <%= Poet.digest('password') %>
+
+<% 30.times do |i| %>
+poet_<%= i %>:
+  name: <%= "Poet #{i}" %>
+  email: <%= "poet-#{i}@example.com" %>
+  password_digest: <%= Poet.digest('password') %>
+<% end %>
