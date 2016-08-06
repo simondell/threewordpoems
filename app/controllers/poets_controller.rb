@@ -1,7 +1,8 @@
 class PoetsController < ApplicationController
   before_action :set_poet, only: [:show, :edit, :update]
-  before_action :logged_in_poet, only: [:edit, :index, :update]
+  before_action :logged_in_poet, only: [:destroy, :edit, :index, :update]
   before_action :correct_poet, only: [:edit, :update]
+  before_action :editor_privilege, only: :destroy
 
   def create
     @poet = Poet.new user_params
@@ -12,6 +13,13 @@ class PoetsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    victim = Poet.find params[:id]
+    victim.destroy
+    flash[:success] = 'Poet culled'
+    redirect_to poets_url
   end
 
   def edit
@@ -43,8 +51,8 @@ private
     redirect_to root_url unless current_poet? @poet
   end
 
-  def set_poet
-    @poet = Poet.find params[:id]
+  def editor_privilege
+    redirect_to root_url unless current_poet.editor?
   end
 
   def logged_in_poet
@@ -63,5 +71,9 @@ private
       :password,
       :password_confirmation
     ]
+  end
+
+  def set_poet
+    @poet = Poet.find params[:id]
   end
 end

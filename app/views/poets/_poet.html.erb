@@ -1,4 +1,7 @@
   <li>
     <%= gravatar_for poet, size: 50 %>
     <%= link_to poet.name, poet %>
+    <% if current_poet.editor? && !current_poet?( poet ) %>
+      | <%= link_to 'cull', poet, method: :delete, data: { confirm: 'You sure?' } %>
+    <% end %>
   </li>

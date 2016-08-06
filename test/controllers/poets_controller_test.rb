@@ -62,4 +62,18 @@ class PoetsControllerTest < ActionDispatch::IntegrationTest
     }}
     assert_not @test_poet_2.reload.editor?
   end
+
+  test 'should redirect destroy when not logged in' do
+    assert_no_difference 'Poet.count' do
+      delete poet_path @test_poet_1
+    end
+  end
+
+  test 'should redirect destroy when logged in but not an editor' do
+    log_in_as @test_poet_2
+    assert_no_difference 'Poet.count' do
+      delete poet_path @test_poet_1
+    end
+    assert_redirected_to root_url
+  end
 end

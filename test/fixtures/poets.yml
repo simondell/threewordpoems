@@ -2,6 +2,7 @@ test_poet:
   name: Hester The Tester
   email: hester@threewordpoems.com
   password_digest: <%= Poet.digest 'password' %>
+  editor: true
 
 archer:
   name: Sterling Archer
