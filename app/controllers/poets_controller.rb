@@ -26,7 +26,8 @@ class PoetsController < ApplicationController
   end
 
   def index
-    @poets = Poet.paginate page: params[:page]
+    activated_poets = Poet.where activated: true
+    @poets = activated_poets.paginate page: params[:page]
   end
 
   def new
@@ -34,6 +35,7 @@ class PoetsController < ApplicationController
   end
 
   def show
+    redirect_to root_url and return unless @poet.activated?
   end
 
   def update
