@@ -5,7 +5,7 @@ module SessionsHelper
       @current_poet ||= Poet.find_by(id: poet_id)
     elsif (poet_id = cookies.signed[:poet_id])
       poet = Poet.find_by(id: poet_id)
-      if poet && poet.authenticated?(cookies[:remember_token])
+      if poet && poet.authenticated?(:remember, cookies[:remember_token])
         log_in poet
         @current_poet = poet
       end

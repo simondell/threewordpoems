@@ -22,9 +22,10 @@ class Poet < ApplicationRecord
 
   has_secure_password
 
-  def authenticated? remember_token
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated? action, token
+    digest = send("#{action}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   def forget

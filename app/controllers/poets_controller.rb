@@ -7,9 +7,9 @@ class PoetsController < ApplicationController
   def create
     @poet = Poet.new user_params
     if @poet.save
-      log_in @poet
-      flash[:success] = "Welcome to the gang, #{@poet.name}"
-      redirect_to poet_url @poet
+      PoetMailer.account_activation(@poet).deliver_now
+      flash[:info] = 'Please check your email to activate your account.'
+      redirect_to root_url
     else
       render 'new'
     end

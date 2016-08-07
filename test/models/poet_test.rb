@@ -87,6 +87,6 @@ class PoetTest < ActiveSupport::TestCase
   end
 
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @poet.authenticated?('')
+    assert_not @poet.authenticated?(:remember, '')
   end
 end
