@@ -63,8 +63,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'dry-mesa-29796.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
-  # ActionMailer::Base.smtp.settings = {
-  config.action_mailer.smtp.settings = {
+  ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
