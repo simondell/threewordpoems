@@ -22,6 +22,11 @@ class Poet < ApplicationRecord
 
   has_secure_password
 
+  def activate
+    update_attribute :activated, true
+    update_attribute :activated_at, Time.zone.now
+  end
+
   def authenticated? action, token
     digest = send("#{action}_digest")
     return false if digest.nil?
@@ -36,6 +41,10 @@ class Poet < ApplicationRecord
     self.remember_token = Poet.new_token
     digested_token = Poet.digest remember_token
     update_attribute :remember_digest, digested_token
+  end
+
+  def send_activation_email
+    PoetMailer.account_activation(self).deliver_now
   end
 
   class << self

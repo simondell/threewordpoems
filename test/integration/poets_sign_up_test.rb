@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class PoetsSignUpTest < ActionDispatch::IntegrationTest
+  def setup
+    ActionMailer::Base.deliveries.clear
+  end
 
   test 'Can see sign-up page' do
     get signup_path
@@ -26,18 +29,32 @@ class PoetsSignUpTest < ActionDispatch::IntegrationTest
 
   test 'register valid sign-ups' do
     assert_difference 'Poet.count', 1 do
-      post signup_path, params: {
+      post poets_path, params: {
         poet: {
           name: 'Spirit in the Sky',
           email: 'the_best@pla.ce',
-          password: 'spritualsky',
-          password_confirmation: 'spritualsky'
+          password: 'password',
+          password_confirmation: 'password'
         }
       }
     end
+    assert_equal 1, ActionMailer::Base.deliveries.size
+
+    poet = assigns(:poet)
+    log_in_as poet
+    assert_not is_logged_in?
+
+    get edit_account_activation_path('invalid token', email: poet.email)
+    assert_not is_logged_in?
+
+    get edit_account_activation_path(poet.activation_token, email: 'wrong')
+    assert_not is_logged_in?
+
+    get edit_account_activation_path(poet.activation_token, email: poet.email)
+    assert poet.reload.activated?
+
     follow_redirect!
-    # assert_template 'poets/show'
-    # assert_not flash.empty?
-    # assert is_logged_in?
+    assert_template 'poets/show'
+    assert is_logged_in?
   end
 end
