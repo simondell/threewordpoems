@@ -1,6 +1,7 @@
 class Poet < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
+  before_create :create_activation_digest
   before_save { email.downcase! }
 
   validates :name,
@@ -49,5 +50,12 @@ class Poet < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+  end
+
+
+private
+  def create_activation_digest
+    self.activation_token = Poet.new_token
+    self.activation_digest = Poet.digest activation_token
   end
 end

@@ -11,7 +11,9 @@ Poet.create!(
   email: "example@railstutorial.org",
   password: "foobar",
   password_confirmation: "foobar",
-  editor: true
+  editor: true,
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 99.times do |i|
@@ -20,5 +22,7 @@ Poet.create!(
     email: "example-#{i+1}@railstutorial.org",
     password: 'password',
     password_confirmation: 'password',
+    activated: true,
+    activated_at: Time.zone.now
   )
 end

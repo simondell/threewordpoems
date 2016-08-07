@@ -3,25 +3,35 @@ test_poet:
   email: hester@threewordpoems.com
   password_digest: <%= Poet.digest 'password' %>
   editor: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   name: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= Poet.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 lana:
   name: Lana Kane
   email: hands@example.gov
   password_digest: <%= Poet.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 malory:
   name: Malory Archer
   email: boss@example.gov
   password_digest: <%= Poet.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |i| %>
 poet_<%= i %>:
   name: <%= "Poet #{i}" %>
   email: <%= "poet-#{i}@example.com" %>
   password_digest: <%= Poet.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>
