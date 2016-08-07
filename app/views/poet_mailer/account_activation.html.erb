@@ -1,0 +1,9 @@
+Hi <%= @poet.name %>
+
+<p>Welcome to Three Word Poems. Glad you could join us!</p>
+
+<p>We need you to activate your account. Please follow the link below (or copy and paste it into your web browser) to complete your activation:</p>
+
+<p><%= edit_account_activation_url @poet.activation_token, email: @poet.email %></p>
+
+<p>Three times thanks!</p>
