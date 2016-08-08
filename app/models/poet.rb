@@ -43,6 +43,10 @@ class Poet < ApplicationRecord
     update_attribute :remember_digest, nil
   end
 
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   def remember
     self.remember_token = Poet.new_token
     digested_token = Poet.digest remember_token
