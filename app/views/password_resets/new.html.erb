@@ -1,0 +1,10 @@
+<% provide(:page_title, 'Forgot your password?') %>
+<%= form_for :password_reset, url: password_resets_new_path do |f| %>
+<section>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p>
+  <p><%= f.submit 'Hook me back up' %></p>
+</section>
+<% end %>
