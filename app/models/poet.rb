@@ -1,5 +1,5 @@
 class Poet < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   before_create :create_activation_digest
   before_save { email.downcase! }
@@ -32,6 +32,13 @@ class Poet < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
+  def create_reset_digest
+    self.reset_token = Poet.new_token
+    digested_token = Poet.digest reset_token
+    update_attribute :reset_digest, digested_token
+    update_attribute :reset_sent_at, Time.zone.now
+  end
+
   def forget
     update_attribute :remember_digest, nil
   end
@@ -44,6 +51,10 @@ class Poet < ApplicationRecord
 
   def send_activation_email
     PoetMailer.account_activation(self).deliver_now
+  end
+
+  def send_password_reset_email
+    PoetMailer.password_reset(self).deliver_now
   end
 
   class << self
