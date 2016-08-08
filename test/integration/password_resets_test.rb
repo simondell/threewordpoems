@@ -74,4 +74,26 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to poet
   end
+
+  test 'expired password reset' do
+    get new_password_reset_path
+    post password_resets_path,
+      params: { password_reset: { email: @poet.email } }
+
+    @poet = assigns :poet
+    @poet.update_attribute :reset_sent_at, 3.hours.ago
+    patch password_reset_path(@poet.reset_token),
+      params: {
+        email: @poet.email,
+        poet: { password: 'foobar', password_confirmation: 'foobar' }
+      }
+# patch password_reset_path(@poet.reset_token),
+#           params: { email: @poet.email,
+#                     poet: { password:              "foobar",
+#                             password_confirmation: "foobar" } }
+
+    assert_response :redirect
+    follow_redirect!
+    assert_match /expired/i, response.body
+  end
 end

@@ -35,8 +35,7 @@ class Poet < ApplicationRecord
   def create_reset_digest
     self.reset_token = Poet.new_token
     digested_token = Poet.digest reset_token
-    update_attribute :reset_digest, digested_token
-    update_attribute :reset_sent_at, Time.zone.now
+    update_columns reset_digest: digested_token, reset_sent_at: Time.zone.now
   end
 
   def forget
