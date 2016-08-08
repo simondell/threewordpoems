@@ -71,6 +71,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
       }
     }
     assert is_logged_in?
+    assert_nil poet.reload.reset_digest
     assert_not flash.empty?
     assert_redirected_to poet
   end
@@ -87,11 +88,6 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
         email: @poet.email,
         poet: { password: 'foobar', password_confirmation: 'foobar' }
       }
-# patch password_reset_path(@poet.reset_token),
-#           params: { email: @poet.email,
-#                     poet: { password:              "foobar",
-#                             password_confirmation: "foobar" } }
-
     assert_response :redirect
     follow_redirect!
     assert_match /expired/i, response.body

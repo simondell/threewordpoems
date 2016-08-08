@@ -29,6 +29,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @poet.update_attributes poet_params
       log_in @poet
+      @poet.update_attribute :reset_digest, nil
       flash[:success] = 'Password has been reset.'
       redirect_to @poet
     else
