@@ -3,7 +3,8 @@ require 'test_helper'
 class PoemTest < ActiveSupport::TestCase
   def setup
     @poet = poets :test_poet
-    @poem = Poem.new title: 'foo', content: 'one two three', poet_id: @poet.id
+    # @poem = @poet.poems.build title: 'foo', content: 'one two three', poet_id: @poet.id
+    @poem = @poet.poems.build title: 'foo', content: 'one two three'
   end
 
   test 'should be valid' do

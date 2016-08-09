@@ -1,4 +1,5 @@
 class Poet < ApplicationRecord
+  has_many :poems
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_create :create_activation_digest
