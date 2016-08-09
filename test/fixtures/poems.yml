@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  content: MyText
-  poet: one
+  title: Makes me wanna cry
+  content: Oy Commo Va
+  created_at: 10.minutes.ago
 
 two:
-  title: MyString
-  content: MyText
-  poet: two
+  title: Could a wolf smoke
+  content: Scripts inspire scripts
+  created_at: 2.years.ago
+
+three:
+  title: There are no words
+  content: jalfe mrweeelary yal
+  created_at: 3.years.ago
+
+most_recent:
+  title: where have you gone?
+  content: remote remote control
+  created_at: Time.zone.now

@@ -89,4 +89,14 @@ class PoetTest < ActiveSupport::TestCase
   test "authenticated? should return false for a user with nil digest" do
     assert_not @poet.authenticated?(:remember, '')
   end
+
+  # poet/poem tests
+  test 'associated poems should be destroyed' do
+    @poet.save
+    @poet.poems.create content: 'through the veil'
+
+    assert_difference 'Poem.count', -1 do
+      @poet.destroy
+    end
+  end
 end
