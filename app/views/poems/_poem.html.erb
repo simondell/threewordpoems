@@ -1,0 +1,4 @@
+<li id="poem-<%= poem.id %>">
+    <p><%= poem.content %></p>
+    <p>Posted <%= time_ago_in_words(poem.created_at) %> ago.</p>
+</li>
