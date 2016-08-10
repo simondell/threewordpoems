@@ -26,3 +26,10 @@ Poet.create!(
     activated_at: Time.zone.now
   )
 end
+
+poets = Poet.order( :created_at ).take 6
+50.times do
+  title = Faker::Hipster.sentence
+  content = Faker::Hipster.words( 3 ).join ' '
+  poets.each {|poet| poet.poems.create title: title, content: content }
+end
