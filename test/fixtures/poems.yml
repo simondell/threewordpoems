@@ -3,19 +3,31 @@
 one:
   title: Makes me wanna cry
   content: Oy Commo Va
-  created_at: 10.minutes.ago
+  created_at: <%= 10.minutes.ago %>
+  poet: test_poet
 
 two:
   title: Could a wolf smoke
   content: Scripts inspire scripts
-  created_at: 2.years.ago
+  created_at: <%= 2.years.ago %>
+  poet: test_poet
 
 three:
   title: There are no words
   content: jalfe mrweeelary yal
-  created_at: 3.years.ago
+  created_at: <%= 3.years.ago %>
+  poet: test_poet
 
 most_recent:
   title: where have you gone?
   content: remote remote control
-  created_at: Time.zone.now
+  created_at: <%= Time.zone.now %>
+  poet: test_poet
+
+<% 30.times do |i| %>
+poem_<%= i %>:
+  title: <%= Faker::Lorem.sentence(5) %>
+  content: <%= Faker::Hipster.words(3) %>
+  created_at: <%= 42.days.ago %>
+  poet: test_poet
+<% end %>
