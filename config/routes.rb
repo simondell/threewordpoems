@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   get '/signup', to: 'poets#new'
   post '/signup', to: 'poets#create'
 
+
+  # poems resource
+  # TODO: extend this to most of the suite later
+  resources :poems, only: [:create, :destroy]
+
   # sessions "resource"
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

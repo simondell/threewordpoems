@@ -58,14 +58,6 @@ private
     redirect_to root_url unless current_poet.editor?
   end
 
-  def logged_in_poet
-    unless logged_in?
-      store_location
-      flash[:error] = 'Please log in'
-      redirect_to login_url
-    end
-  end
-
   def user_params
     required = params.require :poet
     required.permit [
