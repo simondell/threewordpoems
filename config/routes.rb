@@ -19,8 +19,7 @@ Rails.application.routes.draw do
 
 
   # poems resource
-  # TODO: extend this to most of the suite later
-  resources :poems, only: [:create, :destroy]
+  resources :poems, only: [:create, :destroy, :new]
 
   # sessions "resource"
   get '/login', to: 'sessions#new'

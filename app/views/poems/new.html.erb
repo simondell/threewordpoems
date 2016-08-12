@@ -1,0 +1,15 @@
+<%= provide(:page_title, 'Contribute a poem') %>
+<article>
+<%= form_for @poem, url: poems_path do |f| %>
+  <h2>Release a beast!</h2>
+
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p><p>
+    <%= f.label :content %>
+    <%= f.email_field :content %>
+  </p>
+  <p><%= f.submit 'I am done.' %></p>
+<% end %>
+</article>

@@ -1,6 +1,6 @@
 <% provide(:page_title, 'Sign up') %>
-<%= form_for @poet, url: signup_path do |f| %>
 <section>
+<%= form_for @poet, url: signup_path do |f| %>
   <h2>Best foot foward</h2>
   <%= render 'shared/error_messages' %>
   <p>
@@ -17,5 +17,5 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p><%= f.submit 'Create my account' %></p>
-</section>
 <% end %>
+</section>

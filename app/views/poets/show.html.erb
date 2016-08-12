@@ -1,4 +1,4 @@
-<%= provide(:page_title, @poet.name) %>
+<%= provide( :page_title, @poet.name ) %>
 <p><%= gravatar_for @poet %> <%= @poet.name %>, <%= @poet.email %></p>
 <p>Created: <%= @poet.created_at %>; Modified: <%= @poet.updated_at %></p>
 <p>Now, it's <%= Time.now %></p>

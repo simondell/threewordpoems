@@ -2,6 +2,7 @@
   <p><%= link_to 'Three Word Poems', root_path %></p>
   <nav>
 		<ol>
+      <li><%= link_to 'Contribute a poem', new_poem_path %></li>
     <% if logged_in? %>
       <li><%= link_to 'All the poets', poets_path %></li>
       <li><%= link_to 'My poems', current_poet %></li>
