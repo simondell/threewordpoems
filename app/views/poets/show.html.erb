@@ -7,7 +7,7 @@
 <section>
 	<h2>My Poems (<%= @poet.poems.count %>)</h2>
 	<ol>
-	<%= render @poems %>
+	<%= render collection: @poems, partial: 'poems/poem', layout: 'shared/list_item' %>
 	</ol>
 	<%= will_paginate @poems %>
 </section>
