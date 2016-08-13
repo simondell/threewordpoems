@@ -27,7 +27,7 @@ most_recent:
 <% 30.times do |i| %>
 poem_<%= i %>:
   title: <%= Faker::Lorem.sentence(5) %>
-  content: <%= Faker::Hipster.words(3) %>
+  content: <%= Faker::Hipster.words(3).join(' ').html_safe %>
   created_at: <%= 42.days.ago %>
   poet: test_poet
 <% end %>
