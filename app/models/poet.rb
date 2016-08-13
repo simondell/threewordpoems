@@ -74,6 +74,10 @@ class Poet < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+
+    def prefers_anonymity
+      self.new name: 'An Anonymous Poet'
+    end
   end
 
 

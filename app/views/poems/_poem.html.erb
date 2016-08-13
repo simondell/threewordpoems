@@ -1,5 +1,5 @@
 <article id="poem-<%= poem.id %>">
-  <%= content_tag 'h3', poem.title unless poem.title.empty? %>
+  <%= content_tag 'h3', poem.title unless poem.title.blank? %>
   <p><%= poem.content %></p>
-  <p>Posted <%= time_ago_in_words(poem.created_at) %> ago.</p>
+  <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
 </article>

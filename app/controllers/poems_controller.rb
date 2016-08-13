@@ -23,6 +23,9 @@ class PoemsController < ApplicationController
   end
 
   def show
+    if @poem.poet.nil?
+      @poem.poet = Poet.prefers_anonymity
+    end
   end
 
 private
