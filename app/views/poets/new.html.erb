@@ -2,7 +2,7 @@
 <section>
 <%= form_for @poet, url: signup_path do |f| %>
   <h2>Best foot foward</h2>
-  <%= render 'shared/error_messages' %>
+  <%= render 'shared/error_messages', object: f.object %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>

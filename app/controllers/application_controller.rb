@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 private
   def logged_in_poet
+    debugger
     unless logged_in?
       store_location
       flash[:error] = 'Please log in'
