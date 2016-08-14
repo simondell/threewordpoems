@@ -11,6 +11,10 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
     assert_redirected_to @poet
     follow_redirect!
 
+    get new_poem_path
+    assert_select 'input[type=text]', count: 2
+    assert_select 'input[type=file]'
+
     # invalid poem submission
     assert_no_difference 'Poem.count' do
       post poems_path params: { poem: { content: '' } }
@@ -18,10 +22,12 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
 
     # valid poem submission
     content = 'Ima Valid Pome'
+    picture = fixture_file_upload 'test/fixtures/files/cats-q-c-640-480-1.jpg', 'image/jpeg'
     assert_difference 'Poem.count', 1 do
-      post poems_path params: { poem: { content: content } }
+      post poems_path params: { poem: { content: content, picture: picture } }
     end
     follow_redirect!
+    # assert @poet.poems.first.picture?
     assert_match content, response.body
 
     # delete poem
@@ -31,7 +37,7 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
     assert_difference 'Poem.count', -1 do
       delete poem_path first_poem
     end
-    
+
     # visit different poet (no delete links)
     get poet_path poets :lana
     assert_select 'a', text: 'Delete', count: 0

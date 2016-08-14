@@ -2,6 +2,7 @@
   <%= content_tag 'h3', poem.title unless poem.title.blank? %>
   <p><%= poem.content %></p>
   <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
+	<p><%= image_tag poem.picture.url if poem.picture? %></p>
 	<% if @poet && current_poet?(@poet) %>
 	<ul>
 		<li>Edit</li>

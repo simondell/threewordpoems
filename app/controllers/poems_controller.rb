@@ -46,7 +46,8 @@ private
     poem = params.require :poem
     poem.permit [
       :content,
-      :title
+      :title,
+      :picture
     ]
   end
 

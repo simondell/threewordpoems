@@ -1,6 +1,6 @@
 <%= provide(:page_title, 'Contribute a poem') %>
 <article>
-<%= form_for @poem, url: poems_path do |f| %>
+<%= form_for( @poem, html: { multipart: true } ) do |f| %>
   <h2>Release a beast!</h2>
   <%= render 'shared/error_messages', object: f.object %>
   <p>
@@ -9,6 +9,8 @@
   </p><p>
     <%= f.label :content %>
     <%= f.text_field :content %>
+  </p><p>
+    <%= f.file_field :picture, accept: 'image/gif,image/jpeg,image/png' %>
   </p>
   <p><%= f.submit 'I am done.' %></p>
 <% end %>
