@@ -2,4 +2,10 @@
   <%= content_tag 'h3', poem.title unless poem.title.blank? %>
   <p><%= poem.content %></p>
   <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
+	<% if logged_in? %>
+	<ul>
+		<li>Edit</li>
+		<li><%= link_to 'Delete', poem, method: 'delete' %></li>
+	</ul>
+	<% end %>
 </article>
