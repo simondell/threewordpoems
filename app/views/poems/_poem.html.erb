@@ -2,7 +2,7 @@
   <%= content_tag 'h3', poem.title unless poem.title.blank? %>
   <p><%= poem.content %></p>
   <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
-	<% if logged_in? %>
+	<% if @poet && current_poet?(@poet) %>
 	<ul>
 		<li>Edit</li>
 		<li><%= link_to 'Delete', poem, method: 'delete' %></li>

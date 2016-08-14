@@ -11,4 +11,14 @@ class PoemsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to login_url
   end
+
+  test 'should redirect destroy for wrong poem' do
+    log_in_as poets :test_poet
+    poem = poems :some_other_poem
+    
+    assert_no_difference 'Poem.count' do
+      delete poem_path poem
+    end
+    assert_redirected_to root_url
+  end
 end

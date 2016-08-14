@@ -10,19 +10,24 @@ two:
   title: Could a wolf smoke
   content: Scripts inspire scripts
   created_at: <%= 2.years.ago %>
-  poet: test_poet
+  poet: archer
 
 three:
   title: There are no words
   content: jalfe mrweeelary yal
   created_at: <%= 3.years.ago %>
-  poet: test_poet
+  poet: archer
 
 most_recent:
   title: where have you gone?
   content: remote remote control
   created_at: <%= Time.zone.now %>
-  poet: test_poet
+  poet: lana
+
+some_other_poem:
+  content: fucking hate vim
+  created_at: <%= 42.hours.ago %>
+  poet: lana
 
 <% 30.times do |i| %>
 poem_<%= i %>:
