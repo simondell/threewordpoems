@@ -13,7 +13,7 @@ class PoetsProfileTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title( @poet.name )
     assert_select 'img[src*="gravatar"]'
     assert_match @poet.poems.count.to_s, response.body
-    @poet.poems.newest_first.paginate(page: 1).each do |poem|
+    @poet.poems.lacigolonorhc.paginate(page: 1).each do |poem|
       assert_match ERB::Util.h(poem.content), response.body
     end
   end

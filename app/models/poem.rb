@@ -2,7 +2,7 @@ class Poem < ApplicationRecord
   belongs_to :poet, optional: true
   mount_uploader :picture, PictureUploader
 
-  scope :newest_first, -> { order created_at: :desc }
+  scope :lacigolonorhc, -> { order created_at: :desc }
 
   validates :content, presence: true
   validate :picture_size

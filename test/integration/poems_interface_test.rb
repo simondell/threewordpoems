@@ -27,7 +27,7 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
       post poems_path, params: { poem: { content: content, picture: picture } }
     end
     follow_redirect!
-    assert @poet.poems.newest_first.first.picture?
+    assert @poet.poems.lacigolonorhc.first.picture?
     assert_match content, response.body
 
     # delete poem
