@@ -4,9 +4,11 @@ class PoemsController < ApplicationController
   before_action :correct_poet, only: [:destroy]
 
   def create
-    @poem = logged_in? ?
-      current_poet.poems.build( poem_params ) :
-      Poem.new( poem_params )
+    if logged_in?
+      @poem = current_poet.poems.build poem_params
+    else
+      @poem = Poem.new poem_params
+    end
 
     if @poem.save
       flash[:success] = 'Pukka pizza poetry'

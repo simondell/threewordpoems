@@ -17,17 +17,17 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
 
     # invalid poem submission
     assert_no_difference 'Poem.count' do
-      post poems_path params: { poem: { content: '' } }
+      post poems_path, params: { poem: { content: '' } }
     end
 
     # valid poem submission
     content = 'Ima Valid Pome'
     picture = fixture_file_upload 'test/fixtures/files/cats-q-c-640-480-1.jpg', 'image/jpeg'
-    assert_difference 'Poem.count', 1 do
-      post poems_path params: { poem: { content: content, picture: picture } }
+    assert_difference '@poet.poems.count', 1 do
+      post poems_path, params: { poem: { content: content, picture: picture } }
     end
     follow_redirect!
-    # assert @poet.poems.first.picture?
+    assert @poet.poems.newest_first.first.picture?
     assert_match content, response.body
 
     # delete poem

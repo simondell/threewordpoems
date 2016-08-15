@@ -15,8 +15,8 @@ class PoemTest < ActiveSupport::TestCase
     assert_not @poem.valid?
   end
 
-  test 'order should be most recent first' do
+  test 'should allow easy newest-first ordering' do
     most_recent_poem = poems :most_recent
-    assert_equal most_recent_poem, Poem.first
+    assert_equal most_recent_poem, Poem.newest_first.first
   end
 end
