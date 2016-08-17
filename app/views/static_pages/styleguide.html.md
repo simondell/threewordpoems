@@ -25,7 +25,7 @@ Hopefully the above appears as a header.
 
 ## Links
 
-Links and buttons appear as text with no underline.
+Links and buttons appear as text with no underline, in a deeper colour than their surrounding body text.
 
 <p><a href="#">link</a></p>
 <p><button type="button">button</button></p>
@@ -34,6 +34,17 @@ Links and buttons appear as text with no underline.
 <p><a href="#">link</a></p>
 <p><button type="button">button</button></p>
 ```
+
+```css
+body  { color: #555; }
+
+a, button {
+	color: #000;
+	text-decoration: none;
+}
+
+```
+
 
 Collections of links use the classic "list of links" mark-up, with a twist:
 

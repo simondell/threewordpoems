@@ -39,6 +39,7 @@ body {
   margin: 0 auto;
   font-size: 1rem;
   line-height: $vertical-rhythm;
+  color: #484848;
 
   @include respond-to(handhelds) { width: 100%; }
   @include respond-to(wide-handhelds) { width: 100%; }
@@ -62,4 +63,19 @@ main {
 	> pre {
 	  @include gutters;
 	}
+}
+
+/**
+ * links and buttons
+ */
+a, button {
+	color: black;
+	text-decoration: none;
+}
+
+button {
+	padding: 0;
+	border: 0;
+	-webkit-appearance: none;
+	background-color: transparent;
 }
