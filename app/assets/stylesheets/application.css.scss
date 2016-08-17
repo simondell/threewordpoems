@@ -51,18 +51,61 @@ body {
 	@include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
 }
 
-header,
-footer {
-	@include gutters;
-}
-
 main {
 	> h1, > h2,  > h3,  > h4,  > h5,  > h6,
 	> p,
-	> ol, > ul,
-	> pre {
+	> ol, > ul {
 	  @include gutters;
 	}
+}
+
+h1 {
+
+}
+
+h1 {
+	// font-size: 2em; = 32px;
+	line-height: 1.25em;
+	margin-top: 0.625em;
+	margin-bottom: 0.625em;
+}
+
+h2 {
+	font-size: 1.5em;
+	line-height: 1.25em;
+	margin-top: 0.8333333em;
+	margin-bottom: 0.416666667em;
+}
+
+p, pre, ol, ul, dl {
+	margin-top: 0;
+	margin-bottom: 1.25em;
+}
+
+ol, ul, dl {
+	margin-right: 0;
+	margin-left: 0;
+	list-style: none;
+
+  @include respond-to(handhelds) { padding-left: $grid * 2; }
+  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
+  @include respond-to(others) { padding-left: $grid * 4; }
+}
+
+pre {
+	overflow-x: auto;
+	width: 100%;
+	background: #555;
+	color: #eaeaea;
+}
+
+pre > code {
+	display: block;
+	padding-top: 0.625em;
+	padding-bottom: 0.625em;
+  @include respond-to(handhelds) { padding-left: $grid * 2; }
+  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
+  @include respond-to(others) { padding-left: $grid * 4; }
 }
 
 /**
