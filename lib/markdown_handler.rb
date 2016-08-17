@@ -7,7 +7,7 @@ module MarkdownHandler
 
   def self.call template
     compiled_source = erb.call template
-    "Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_intra_emphasis: true, autolink: true).render(begin;#{compiled_source};end).html_safe"
+    "Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_intra_emphasis: true, fenced_code_blocks: true, autolink: true).render(begin;#{compiled_source};end).html_safe"
   end
 end
 
