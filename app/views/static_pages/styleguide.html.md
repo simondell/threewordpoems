@@ -1,5 +1,9 @@
 <% provide :page_title, 'Styleguide' %>
 
+## Headers
+
+Hopefully the above appears as a header.
+
 <h2>Links</h2>
 Collections of links use the classic "list of links" mark-up, with a twist:
 <code>
