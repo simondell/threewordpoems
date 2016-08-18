@@ -107,6 +107,17 @@ Collections of links use the classic "list of links" mark-up, with a twist:
 ```
 
 ```sass
+nav {
+  ol {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  li {
+    margin-right: $grid * 4;
+  }
+}
 ```
 
 [clagnut]: https://24ways.org/2006/compose-to-a-vertical-rhythm
