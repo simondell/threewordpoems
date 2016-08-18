@@ -30,6 +30,11 @@ $vertical-rhythm: $grid * 5;
   }
 }
 
+@mixin gutters {
+  @include respond-to(handhelds) { padding: 0 $grid * 2; }
+  @include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
+}
+
 
 /**
  * colours
@@ -38,6 +43,9 @@ $not-black: #484848;
 $not-white: #eaeaea;
 
 
+/**
+ * main styles
+ */
 html {
   font-size: $grid * 4;
 }
@@ -54,82 +62,134 @@ body {
   @include respond-to(others) { max-width: 960px; }
 }
 
-@mixin gutters {
-	@include respond-to(handhelds) { padding: 0 $grid * 2; }
-	@include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
-}
-
-h1, h2,  h3,  h4,  h5,  h6,
-p,
-ol, ul {
+h1, h2, h3, h4, h5, h6,
+p {
   @include gutters;
 }
 
+ol, ul, dl {
+  @include gutters;
+  @include respond-to(others) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// header,
+// main,
+// footer {
+//  > h1, > h2, > h3, > h4, > h5, > h6,
+//  > p,
+//  > ol, > ul {
+//    @include gutters;
+//  }
+// }
+
 h1 {
-	line-height: 1.25em;
-	margin-top: 0.625em;
-	margin-bottom: 0.625em;
-	font-size: 2rem;
-	font-weight: 700;
+  line-height: 1.25em;
+  margin-top: 0.625em;
+  margin-bottom: 0.625em;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 header > p:first-child,
 h2 {
-	font-size: 1.5em;
-	line-height: 1.25em;
-	margin-top: 0.8333333em;
-	margin-bottom: 0.416666667em;
+  font-size: 1.5em;
+  line-height: 1.25em;
+  margin-top: 0.8333333em;
+  margin-bottom: 0.416666667em;
 }
 
+img { max-width: 100%; }
+
 p, pre, ol, ul, dl {
-	margin-top: 0;
-	margin-bottom: 1.25em;
+  margin-top: 0;
+  margin-bottom: 1.25em;
 }
 
 ol, ul, dl {
-	margin-right: 0;
-	margin-left: 0;
-	list-style: none;
-
-  @include respond-to(handhelds) { padding-left: $grid * 2; }
-  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
-  @include respond-to(others) { padding-left: $grid * 4; }
+  list-style: none;
 }
 
-pre {
-	overflow-x: auto;
-	width: 100%;
-	background: $not-black;
-	color: $not-white;
-}
 
-pre > code {
-	display: block;
-	padding-top: 0.625em;
-	padding-bottom: 0.625em;
-  @include respond-to(handhelds) { padding-left: $grid * 2; }
-  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
-  @include respond-to(others) { padding-left: $grid * 4; }
-}
 
 /**
  * links and buttons
  */
 a, button {
-	color: black;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
 }
+
+footer a { font-weight: 400;}
 
 input,
 textarea,
 button {
-	border: 1px solid $not-black;
-	-webkit-appearance: none;
-	background-color: transparent;
-	border-radius: $grid / 2;
+  border: 1px solid $not-black;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border-radius: $grid / 2;
 
-	&:focus {
-		border-color: black;
-		outline: 0;
-	}
+  &:focus {
+    border-color: black;
+    outline: 0;
+  }
+}
+
+button:active,
+input[type="button"]:active,
+a:hover,
+a:active {
+  background-color: $not-black;
+  color: $not-white;
+  outline: $grid $not-black solid;
+}
+
+button:active,
+input[type="button"]:active {
+  border-color: transparent;
+}
+
+
+nav {
+  ol {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  li {
+    position: relative;
+    margin-right: $grid * 4;
+
+    &:not(:last-child)::after {
+      position: absolute;
+      right: -0.666666em;
+      content: "|";
+    }
+  }
+}
+
+
+
+/**
+ * styleguide specific
+ */
+pre {
+  overflow-x: auto;
+  width: 100%;
+  background: $not-black;
+  color: $not-white;
+}
+
+pre > code {
+  display: block;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  @include respond-to(handhelds) { padding-left: $grid * 2; }
+  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
+  @include respond-to(others) { padding-left: $grid * 4; }
 }
