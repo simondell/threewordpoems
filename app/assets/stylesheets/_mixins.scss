@@ -1,0 +1,43 @@
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: 479px) { @content; }
+  }
+  @else if $media == wide-handhelds {
+    @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
+  }
+  @else if $media == others {
+    @media only screen and (min-width: 768px) { @content; }
+  }
+}
+
+@mixin gutters {
+  @include respond-to(handhelds) { padding: 0 $grid * 2; }
+  @include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
+}
+
+@mixin controls {
+  ol {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  li {
+    position: relative;
+    margin-right: $grid * 4;
+
+    &:not(:last-child)::after {
+      position: absolute;
+      right: -0.666666em;
+      content: "|";
+    }
+  }
+}
+
+.headlines {
+  font-size: 2rem;
+  line-height: 1.25em;
+  margin-top: 0.625em;
+  margin-bottom: 0.625em;
+}
+

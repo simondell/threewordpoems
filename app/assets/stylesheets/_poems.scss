@@ -1,0 +1,62 @@
+article {
+  img {
+    display: block;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25em;
+    margin-top: 0;
+    margin-bottom: -1.25em;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  div {
+    background-color: red;
+    color: yellow;
+  }
+
+  img + div {
+    @include respond-to(others) {
+      position: absolute;
+      z-index: 2;
+      bottom: 100px;
+      left: 20px;
+      padding: 0 $grid * 2;
+    }
+  }
+
+  div > p {
+    @extend .headlines;
+    font-weight: 700;
+  }
+
+  ol {
+    // margin-bottom: 0;
+    @include controls;
+  }
+
+  li { display: inline-block }
+
+  a {
+    color: yellow;
+
+    &:hover,
+    &:active {
+      background-color: yellow;
+      color: red;
+      outline-color: yellow;
+    }
+  }
+}
+
+// TODO: This rule is a hack for the styleguide.
+// It'd be great to work out controller-only stylesheets so as to move this
+//  to the static_pages.scss file
+div[role="example"] {
+  @include respond-to(others) {
+    position: relative;
+    max-width: 960px;
+    max-height: 720px;
+  }
+}

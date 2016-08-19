@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width" />
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render "shared/header" %>
 
     <main>
-      <h1><%= yield :page_title %></h1>
       <%= render 'shared/flash' %>
       <%= yield %>
     </main>

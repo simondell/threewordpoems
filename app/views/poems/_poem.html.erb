@@ -1,12 +1,31 @@
 <article id="poem-<%= poem.id %>">
-  <%= content_tag 'h3', poem.title unless poem.title.blank? %>
-  <p><%= poem.content %></p>
-  <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
-	<p><%= image_tag poem.picture.url if poem.picture? %></p>
-	<% if @poet && current_poet?(@poet) %>
-	<ul>
-		<li>Edit</li>
-		<li><%= link_to 'Delete', poem, method: 'delete' %></li>
-	</ul>
-	<% end %>
+  <% if poem.picture? %>
+  <img alt="" src="assets/oil_320w.jpg"
+    srcset="assets/oil_640w.jpg 640w,
+            assets/oil_800w.jpg 800w,
+            assets/oil_1200w.jpg 1200w,
+            assets/oil_1920w.jpg 1920w"
+    sizes="(max-width=479) calc(100vm - 16px),
+           (max-width=767) calc(100vm - 24px),
+           960px" />
+  <% end %>
+
+  <div>
+    <%= content_tag 'h1', poem.title unless poem.title.blank? %>
+    <p><%= poem.content %></p>
+    <footer>
+      <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
+      <ol>
+        <li><a href="#edit">Edit</a></li>
+        <li><a href="#delete">Delete</a></li>
+      </ol>
+
+      <% if @poet && current_poet?(@poet) %>
+      <ul>
+        <li>Edit</li>
+        <li><%= link_to 'Delete', poem, method: 'delete' %></li>
+      </ul>
+      <% end %>
+    </footer>
+  </div>
 </article>
