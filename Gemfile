@@ -15,6 +15,7 @@ gem 'carrierwave',      '0.11.2'
 gem 'mini_magick',      '4.5.1'
 gem 'carrierwave-aws',  '~> 1.0'
 gem 'redcarpet',        '~>3.0'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'
