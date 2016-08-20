@@ -1,17 +1,19 @@
 <%= provide(:page_title, 'Contribute a poem') %>
 <article>
 <%= form_for( @poem, html: { multipart: true } ) do |f| %>
-  <h2>Release a beast!</h2>
+  <div>
   <%= render 'shared/error_messages', object: f.object %>
   <p>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_area :title, placeholder: 'An optional title may be as long as you like' %>
   </p><p>
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, placeholder: 'Your words, carefully' %>
   </p><p>
     <%= f.file_field :picture, accept: 'image/gif,image/jpeg,image/png' %>
   </p>
   <p><%= f.submit 'I am done.' %></p>
+
+  </div>
 <% end %>
 </article>

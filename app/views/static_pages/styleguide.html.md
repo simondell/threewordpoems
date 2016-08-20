@@ -144,9 +144,11 @@ nav {
 
 # Poems
 
-Poems are represented by `article`s. Poems have images, text, attribution meta-data and controls (edit, delete &amp;tc). These use the simplest mark-up I could think of.
+Poems are represented by `article`s. Poems have images, text, attribution meta-data and controls (edit, delete &amp;tc). I've aimed for rich semantics.
 
-
+```html
+<%= render partial: 'poems/poem', locals: { poem: @example_poet.poems.first } %>
+```
 <div role="example">
   <%= render partial: 'poems/poem', locals: { poem: @example_poet.poems.first } %>
 </div>
