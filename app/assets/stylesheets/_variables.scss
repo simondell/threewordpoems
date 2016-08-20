@@ -7,5 +7,54 @@ $vertical-rhythm: $grid * 5;
 /**
  * colours
  */
+$green: #00bb00;
 $not-black: #484848;
 $not-white: #eaeaea;
+
+.black-on-white {
+  background-color: white;
+  outline-color: white;
+  color: black;
+}
+
+.white-on-black {
+  background-color: $not-black;
+  outline-color: $not-black;
+  color: $not-white;
+}
+
+.yellow-on-red {
+  background-color: red;
+  outline-color: red;
+  color: yellow;
+}
+
+.red-on-yellow {
+  background-color: yellow;
+  outline-color: yellow;
+  color: red;
+}
+
+.blue-on-green {
+  background-color: $green;
+  outline-color: $green;
+  color: blue;
+}
+
+.green-on-blue {
+  background-color: blue;
+  outline-color: blue;
+  color: $green;
+}
+
+.green-on-yellow {
+  background-color: yellow;
+  outline-color: yellow;
+  color: $green;
+}
+
+.yellow-on-green {
+  background-color: $green;
+  outline-color: $green;
+  color: yellow;
+}

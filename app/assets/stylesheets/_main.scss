@@ -53,13 +53,16 @@ ol, ul, dl {
   list-style: none;
 }
 
+nav {
+  @include controls;
+}
 
 
 /**
  * links and buttons
  */
 a, button {
-  color: black;
+  @extend .black-on-white;
   text-decoration: none;
   font-weight: 700;
 }
@@ -69,7 +72,8 @@ footer a { font-weight: 400;}
 input,
 textarea,
 button {
-  border: 1px solid $not-black;
+  border-width: 1px;
+  border-style: solid;
   -webkit-appearance: none;
   background-color: transparent;
   border-radius: $grid / 2;
@@ -84,9 +88,11 @@ button:active,
 input[type="button"]:active,
 a:hover,
 a:active {
+  @extend .white-on-black;
   background-color: $not-black;
   color: $not-white;
-  outline: $grid $not-black solid;
+  outline-style: solid;
+  outline-width: $grid;
 }
 
 button:active,
@@ -94,9 +100,25 @@ input[type="button"]:active {
   border-color: transparent;
 }
 
+a[href*="poems"] {
+  &:hover,
+  &:focus {
+    @extend .yellow-on-red;
+  }
+}
 
-nav {
-  @include controls;
+a[href*="poets"] {
+  &:hover,
+  &:focus {
+    @extend .yellow-on-green;
+  }
+}
+
+a[href*="log"] {
+  &:hover,
+  &:focus {
+    @extend .green-on-blue;
+  }
 }
 
 

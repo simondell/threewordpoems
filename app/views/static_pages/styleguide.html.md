@@ -18,6 +18,25 @@ body {
 }
 ```
 
+
+## Colours
+
+"Things" get colour-coded:
+
+- <span class="yellow-on-red">Links and content for <i class="red-on-yellow">poems</i> use yellow on red</span>
+- <span class="yellow-on-green">Links and content for <i class="green-on-yellow">poets</i> use yellow on green</span>
+- <span class="green-on-blue">Links and content for <i class="blue-on-green">sessions</i> use green on blue</span>
+
+Highlights, `:active` and `:hover` states use the inverse colours.
+
+
+## Classes
+
+As far as I can manage, elements are not grouped or defined by class names. Data types are identified by their mark-up, and the mark-up is chosen to best reflect the meaning or intent. For example, all "poems" use `<article>`s, poets **probably** use `<dl>`s. There are classes in the SASS, but used as source material for `@extend` directives.
+
+The styleguide makes use of exceptions to this rule. Because.
+
+
 ## Mobile First & Layout
 
 Information and relevant links should be as close to the top of the page as possible, with secondary information on separate pages reached by menus or links in the footer. Smaller screens need a little padding to stop content pressing on the screen edges. Larger screens which can accomodate a 960px wide `<body>` will drop the padding. I should probably express "mobile first" by not even having a mixin for setting properties for mobile screens, instead writing them as defaults... but I don't.
@@ -84,7 +103,7 @@ a, button {
 
 ```
 
-Collections of links use the classic "list of links" mark-up, with a twist:
+Collections of links use the classic "list of links" mark-up:
 
 ```html
 <ol>
@@ -93,8 +112,6 @@ Collections of links use the classic "list of links" mark-up, with a twist:
 	<li><a href="foo">Link 3</a></li>
 <ol>
 ```
-
-<p>Arguably, the ordering of links is defined, and as such the list should be an "ordered list", rather than an "unordered list".</p>
 
 <p>Some link lists are presented horizontally, such as the princple navigation.</p>
 
@@ -107,7 +124,7 @@ Collections of links use the classic "list of links" mark-up, with a twist:
 ```
 
 ```sass
-nav {
+@mixin controls {
   ol {
     display: flex;
     flex-flow: row nowrap;
@@ -117,6 +134,10 @@ nav {
   li {
     margin-right: $grid * 4;
   }
+}
+
+nav {
+  @include controls;
 }
 ```
 

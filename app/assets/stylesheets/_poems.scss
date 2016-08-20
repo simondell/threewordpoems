@@ -12,8 +12,7 @@ article {
   }
 
   div {
-    background-color: red;
-    color: yellow;
+    @extend .yellow-on-red;
   }
 
   img + div {
@@ -39,13 +38,11 @@ article {
   li { display: inline-block }
 
   a {
-    color: yellow;
+    @extend .yellow-on-red;
 
     &:hover,
     &:active {
-      background-color: yellow;
-      color: red;
-      outline-color: yellow;
+      @extend .red-on-yellow;
     }
   }
 }
