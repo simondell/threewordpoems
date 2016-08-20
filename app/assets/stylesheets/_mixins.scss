@@ -22,15 +22,16 @@
     justify-content: flex-start;
   }
 
-  li {
-    position: relative;
-    margin-right: $grid * 4;
+  li:not(:first-child)::before {
+    content: ", ";
+  }
 
-    &:not(:last-child)::after {
-      position: absolute;
-      right: -0.666666em;
-      content: "|";
-    }
+  li:last-child::before {
+    content: ", or ";
+  }
+
+  li:last-child::after {
+    content: ".";
   }
 }
 

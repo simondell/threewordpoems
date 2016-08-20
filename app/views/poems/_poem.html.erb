@@ -14,12 +14,10 @@
     <%= content_tag 'h1', poem.title unless poem.title.blank? %>
     <p><%= poem.content %></p>
     <footer>
-      <p>Posted <%= time_ago_in_words(poem.created_at) %> ago by <%= poem.poet.name %></p>
-      <ol>
-        <li><a href="#edit">Edit</a></li>
-        <li><a href="#delete">Delete</a></li>
-      </ol>
-
+      <dl>
+        <dt>By </dt><dd><address><%= poem.poet.name %></address>,</dd>
+        <dt>posted </dt><dd><%= time_ago_in_words(poem.created_at) %> ago</dd>
+      </dl>
       <% if @poet && current_poet?(@poet) %>
       <ul>
         <li>Edit</li>

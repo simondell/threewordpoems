@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
     @example_poet.poems.build(
       title: 'Poems can have really long titles that fall into the margin-top of the poem they title.',
       content: 'Paragraphs for content',
-      created_at: Time.zone.now
+      created_at: 42.days.ago
     )
   end
 end

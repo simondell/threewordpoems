@@ -30,8 +30,14 @@ article {
     font-weight: 700;
   }
 
+  dd, dt,
+  address {
+    display: inline;
+  }
+
+  dd { margin-left: 0; }
+
   ol {
-    // margin-bottom: 0;
     @include controls;
   }
 
