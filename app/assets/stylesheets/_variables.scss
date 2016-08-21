@@ -7,7 +7,8 @@ $vertical-rhythm: $grid * 5;
 /**
  * colours
  */
-$green: #00bb00;
+$blue: #2222dd;
+$green: #11cc11;
 $not-black: #484848;
 $not-white: #eaeaea;
 
@@ -24,8 +25,8 @@ $not-white: #eaeaea;
 }
 
 .yellow-on-red {
-  background-color: red;
-  outline-color: red;
+  background-color: #dd2222;
+  outline-color: #dd2222;
   color: yellow;
 }
 
@@ -38,7 +39,7 @@ $not-white: #eaeaea;
 .blue-on-green {
   background-color: $green;
   outline-color: $green;
-  color: blue;
+  color: $blue;
 }
 
 .green-on-blue {
@@ -57,4 +58,27 @@ $not-white: #eaeaea;
   background-color: $green;
   outline-color: $green;
   color: yellow;
+}
+
+a[href*="poems"] {
+  &:hover,
+  &:focus {
+    @extend .red-on-yellow;
+  }
+}
+
+a[href*="sign"],
+a[href*="password"],
+a[href*="poet"] {
+  &:hover,
+  &:focus {
+    @extend .green-on-yellow;
+  }
+}
+
+a[href*="log"] {
+  &:hover,
+  &:focus {
+    @extend .blue-on-green;
+  }
 }

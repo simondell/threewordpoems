@@ -67,6 +67,14 @@ article {
   ::placeholder {
     opacity: 0.9;
   }
+
+  label {
+    @include visually-hidden {
+      display: block;
+      width: 0;
+      height: 0;
+    }
+  }
 }
 
 // TODO: This rule is a hack for the styleguide.

@@ -81,50 +81,80 @@ button {
   border-style: solid;
   border-radius: $grid;
   border-color: currentColor;
-  -webkit-appearance: none;
   background-color: inherit;
   color: inherit;
 
   &:active,
   &:focus {
-    // outline-style: solid;
     outline-width: $grid;
     outline-color: currentColor;
   }
 }
 
 textarea,
-input:not([type="button"]):not([type="submit"]) {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
   width: 100%;
 }
 
-a[href*="poems"] {
-  &:hover,
-  &:focus {
-    @extend .yellow-on-red;
-  }
+/* custom checkbox hackishness */
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
 }
 
-a[href*="sign"],
-a[href*="poets"] {
-  &:hover,
-  &:focus {
-    @extend .yellow-on-green;
-  }
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 1.5em;
 }
 
-a[href*="log"] {
-  &:hover,
-  &:focus {
-    @extend .green-on-blue;
-  }
+input[type="radio"] + label::before,
+input[type="radio"] + label::after,
+input[type="checkbox"] + label::before,
+input[type="checkbox"] + label::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  background-color: inherit;
+  color: inherit;
 }
 
-label {
-  @include visually-hidden {
-    display: block;
-    width: 0;
-    height: 0;
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+  border: 1px solid currentColor;
+  content: " ";
+}
+
+input[type="radio"] + label::before {
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked + label::after {
+    content: "\2022";
+}
+
+input[type="checkbox"] + label::before {
+    border-radius: $grid;
+}
+
+input[type="checkbox"]:checked + label::after {
+    content: "\2713";
+}
+
+
+form h1,
+form h2,
+form p {
+  @include respond-to(others) {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
