@@ -1,7 +1,5 @@
 <%= provide(:page_title, 'Contribute a poem') %>
-<article>
 <%= form_for( @poem, html: { multipart: true } ) do |f| %>
-  <div>
   <%= render 'shared/error_messages', object: f.object %>
   <p>
     <%= f.label :title %>
@@ -13,7 +11,4 @@
     <%= f.file_field :picture, accept: 'image/gif,image/jpeg,image/png' %>
   </p>
   <p><%= f.submit 'I am done.' %></p>
-
-  </div>
 <% end %>
-</article>

@@ -1,7 +1,26 @@
-// Place all the styles related to the Poets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.poet-colours {
+  @include colourise($yellow, $green);
+}
 
+.poet-colours-highlight {
+  @include colourise($green, $yellow);
+}
+
+/** link colours */
+a[href*="sign"],
+a[href*="password"],
+a[href*="poet"] {
+  @extend .poet-colours;
+
+  &:hover,
+  &:focus {
+    @extend .poet-colours-highlight;
+  }
+}
+
+form[action*="sign"],
+form[action*="password"],
+form[action="poet"],
 address {
-  @extend .yellow-on-green;
+  @extend .poet-colours;
 }

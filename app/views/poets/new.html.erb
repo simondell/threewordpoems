@@ -1,5 +1,4 @@
 <% provide(:page_title, 'Sign up') %>
-<address>
 <%= form_for @poet, url: signup_path do |f| %>
   <h1>Create your account</h1>
   <%= render 'shared/error_messages', object: f.object %>
@@ -18,4 +17,3 @@
   </p>
   <p><%= f.submit 'Create my account' %></p>
 <% end %>
-</address>

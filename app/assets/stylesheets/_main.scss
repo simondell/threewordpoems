@@ -73,10 +73,13 @@ a, button {
 
 footer a { font-weight: 400;}
 
+label { display: block; }
+
 input,
 textarea,
 button {
   box-sizing: border-box;
+  max-width: 500px;
   border-width: 1px;
   border-style: solid;
   border-radius: $grid;
@@ -145,17 +148,6 @@ input[type="checkbox"] + label::before {
 
 input[type="checkbox"]:checked + label::after {
     content: "\2713";
-}
-
-
-form h1,
-form h2,
-form p {
-  @include respond-to(others) {
-    width: 60%;
-    margin-right: auto;
-    margin-left: auto;
-  }
 }
 
 

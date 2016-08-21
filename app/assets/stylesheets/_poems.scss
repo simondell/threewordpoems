@@ -1,7 +1,30 @@
+.poem-colours {
+  @include colourise($yellow, $red);
+}
+
+.poem-colours-highlight {
+  @include colourise($red, $yellow);
+}
+
+/** link colours */
+a[href*="poems"] {
+  @extend .poem-colours;
+}
+
+a[href*="poems"] {
+  &:hover,
+  &:focus {
+    @extend .poem-colours-highlight;
+  }
+}
+
+/**
+ * `<article>`s represent Poems
+ */
 article {
   &::selection,
   ::selection {
-    @extend .red-on-yellow;
+    @extend .poem-colours-highlight;
   }
 
   img {
@@ -18,7 +41,7 @@ article {
   }
 
   div {
-    @extend .yellow-on-red;
+    @extend .poem-colours;
   }
 
   img + div {
@@ -49,23 +72,15 @@ article {
 
   li { display: inline-block }
 
-  a {
-    @extend .yellow-on-red;
+}
 
-    &:hover,
-    &:active {
-      @extend .red-on-yellow;
-    }
-  }
+
+form[action*="poems"] {
+  @extend .poem-colours;
 
   input, textarea, button,
   ::placeholder {
-    @extend .yellow-on-red;
-    border-color: yellow;
-  }
-
-  ::placeholder {
-    opacity: 0.9;
+    @extend .poem-colours;
   }
 
   label {
@@ -76,6 +91,7 @@ article {
     }
   }
 }
+
 
 // TODO: This rule is a hack for the styleguide.
 // It'd be great to work out controller-only stylesheets so as to move this
