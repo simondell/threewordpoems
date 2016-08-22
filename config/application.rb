@@ -12,6 +12,6 @@ module Threewordpoems
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-require 'markdown_handler'
+    require 'markdown_handler'
   end
 end
