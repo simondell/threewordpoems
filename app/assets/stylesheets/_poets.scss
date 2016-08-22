@@ -23,4 +23,9 @@ form[action*="password"],
 form[action="poet"],
 address {
   @extend .poet-colours;
+
+  &::selection,
+  ::selection {
+    @extend .poet-colours-highlight;
+  }
 }

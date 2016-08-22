@@ -22,11 +22,6 @@ a[href*="poems"] {
  * `<article>`s represent Poems
  */
 article {
-  &::selection,
-  ::selection {
-    @extend .poem-colours-highlight;
-  }
-
   img {
     display: block;
   }
@@ -83,12 +78,16 @@ form[action*="poems"] {
     @extend .poem-colours;
   }
 
-  label {
-    @include visually-hidden {
-      display: block;
-      width: 0;
-      height: 0;
-    }
+  ::placeholder {
+    opacity: 0.8;
+  }
+}
+
+article,
+form[action*="poems"] {
+  &::selection,
+  ::selection {
+    @extend .poem-colours-highlight;
   }
 }
 

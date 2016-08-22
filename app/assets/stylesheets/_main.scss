@@ -61,6 +61,7 @@ nav {
 /**
  * interactive elements
  */
+*::selection,
 ::selection {
   opacity: 1;
 }

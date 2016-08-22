@@ -3,16 +3,16 @@
   <h1>Create your account</h1>
   <%= render 'shared/error_messages', object: f.object %>
   <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p><p>
-    <%= f.label :email %>
+    <%= f.label :email, 'Your email address (required)' %>
     <%= f.email_field :email %>
   </p><p>
-    <%= f.label :password %>
+    <%= f.label :name, 'How you''d like to be known (optional)' %>
+    <%= f.text_field :name %>
+  </p><p>
+    <%= f.label :password, 'A password of at least 6 characters (required)' %>
     <%= f.password_field :password %>
   </p><p>
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation, 'Please type that again (to be sure)' %>
     <%= f.password_field :password_confirmation %>
   </p>
   <p><%= f.submit 'Create my account' %></p>

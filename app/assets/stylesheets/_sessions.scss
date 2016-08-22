@@ -24,4 +24,9 @@ a[href*="session"] {
 form[action*="log"],
 form[action*="session"] {
   @extend .session-colours;
+
+  &::selection,
+  ::selection {
+    @extend .session-colours-highlight;
+  }
 }
