@@ -6,27 +6,41 @@ html {
 }
 
 body {
+  width: 100%;
   height: 100%;
+  max-width: 960px;
   margin: 0 auto;
   font-size: 1rem;
   line-height: $vertical-rhythm;
   color: $not-black;
-
-  @include respond-to(handhelds) { width: 100%; }
-  @include respond-to(wide-handhelds) { width: 100%; }
-  @include respond-to(others) { max-width: 960px; }
 }
 
-h1, h2, h3, h4, h5, h6,
-p {
-  @include gutters;
+/**
+ * gutters
+ */
+body {
+  box-sizing: border-box;
+
+  @include respond-to(handhelds) { padding: 0 $grid * 2; }
+  @include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
+  @include respond-to(tablets) { padding: 0 $grid * 4; }
+  @include respond-to(others) { padding: 0 $grid * 4; }
 }
 
-ol, ul, dl {
-  @include gutters;
+form, pre, ol, ul, dl {
+  box-sizing: border-box;
+
+  @include respond-to(handhelds) {
+    @include gutters($grid);
+  }
+  @include respond-to(wide-handhelds) {
+    @include gutters($grid * 2);
+  }
+  @include respond-to(tablets) {
+    @include gutters($grid * 3);
+  }
   @include respond-to(others) {
-    padding-right: 0;
-    padding-left: 0;
+    @include gutters($grid * 4);
   }
 }
 
@@ -54,18 +68,29 @@ ol, ul, dl {
 }
 
 nav {
-  @include controls;
+  ol {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  li:not(:first-child)::before {
+    content: ", ";
+  }
+
+  li:last-child::before {
+    content: ", or ";
+  }
+
+  li:last-child::after {
+    content: ".";
+  }
 }
 
 
 /**
  * interactive elements
  */
-*::selection,
-::selection {
-  opacity: 1;
-}
-
 a, button {
   @extend .black-on-white;
   text-decoration: none;
@@ -158,7 +183,6 @@ input[type="checkbox"]:checked + label::after {
  */
 pre {
   overflow-x: auto;
-  width: 100%;
   background: $not-black;
   color: $not-white;
 }
@@ -167,7 +191,4 @@ pre > code {
   display: block;
   padding-top: 0.625em;
   padding-bottom: 0.625em;
-  @include respond-to(handhelds) { padding-left: $grid * 2; }
-  @include respond-to(wide-handhelds) { padding-left: $grid * 3; }
-  @include respond-to(others) { padding-left: $grid * 4; }
 }

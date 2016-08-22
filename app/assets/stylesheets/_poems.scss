@@ -22,6 +22,13 @@ a[href*="poems"] {
  * `<article>`s represent Poems
  */
 article {
+  box-sizing: border-box;
+  @extend .poem-colours;
+  @include respond-to(handhelds) { @include pull($grid); }
+  @include respond-to(wide-handhelds) { @include pull($grid * 2); }
+  @include respond-to(tablets) { @include pull($grid * 3); }
+  @include respond-to(others) { @include pull($grid * 4); }
+
   img {
     display: block;
   }
@@ -37,14 +44,18 @@ article {
 
   div {
     @extend .poem-colours;
+    @include respond-to(handhelds) { @include push($grid); }
+    @include respond-to(wide-handhelds) { @include push($grid * 2); }
+    @include respond-to(tablets) { @include push($grid * 3); }
+    @include respond-to(others) { @include push($grid * 4); }
   }
 
   img + div {
     @include respond-to(others) {
       position: absolute;
       z-index: 2;
-      bottom: 100px;
-      left: 20px;
+      bottom: $vertical-rhythm * 3;
+      left: $grid * 6;
       padding: 0 $grid * 2;
     }
   }
@@ -62,11 +73,16 @@ article {
   dd { margin-left: 0; }
 
   ol {
-    @include controls;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
   }
 
-  li { display: inline-block }
-
+  li:not(:last-child)::after {
+    content: "|";
+    margin-left: 1ex;
+    margin-right: 1ex;
+  }
 }
 
 

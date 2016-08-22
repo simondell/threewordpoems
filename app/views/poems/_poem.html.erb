@@ -1,13 +1,11 @@
 <article id="poem-<%= poem.id %>">
   <% if poem.picture? %>
-  <img alt="" src="assets/images/oil_320w.jpg"
-    srcset="assets/images/oil_640w.jpg 640w,
-            assets/images/oil_800w.jpg 800w,
-            assets/images/oil_1200w.jpg 1200w,
-            assets/images/oil_1920w.jpg 1920w"
-    sizes="(max-width=479) calc(100vm - 16px),
-           (max-width=767) calc(100vm - 24px),
-           960px" />
+  <img alt="" src="assets/oil_800w.jpg"
+    srcset="assets/oil_640w.jpg 640w,
+            assets/oil_800w.jpg 800w,
+            assets/oil_1200w.jpg 1200w,
+            assets/oil_1920w.jpg 1920w"
+    sizes="100%, (min-width=960) 960px" />
   <% end %>
 
   <div>

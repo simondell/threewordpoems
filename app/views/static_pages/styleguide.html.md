@@ -150,20 +150,19 @@ Poems are represented by `article`s. Poems have images, text, attribution meta-d
 <%= render partial: 'poems/poem', locals: { poem: @example_poet.poems.first } %>
 ```
 <div role="example">
-  <%= render partial: 'poems/poem', locals: { poem: @example_poet.poems.first } %>
+  <%#= render partial: 'poems/poem', locals: { poem: @example_poet.poems.first } %>
 </div>
 
 <div role="example">
   <article>
-    <img alt="" src="assets/oil_320w.jpg"
-      srcset="assets/oil_640w.jpg 640w,
-              assets/oil_800w.jpg 800w,
-              assets/oil_1200w.jpg 1200w,
-              assets/oil_1920w.jpg 1920w"
-      sizes="(max-width=479) calc(100vm - 16px),
-             (max-width=767) calc(100vm - 24px),
-             960px" />
-
+    <img alt="" src="assets/images/oil_1920w.jpg" />
+<!--     <img alt="" src="assets/images/oil_800w.jpg"
+      srcset="assets/images/oil_640w.jpg 640w,
+              assets/images/oil_800w.jpg 800w,
+              assets/images/oil_1200w.jpg 1200w,
+              assets/images/oil_1920w.jpg 1920w"
+      sizes="100%, (min-width=960) 960px" />
+ -->
     <div>
       <h1>Poems can have really long titles that fall into the margin-top of the poem they title.</h1>
       <p>Paragraphs for content</p>

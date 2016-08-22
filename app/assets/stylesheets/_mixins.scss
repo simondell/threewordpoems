@@ -8,34 +8,27 @@
   @else if $media == wide-handhelds {
     @media only screen and (min-width: 480px) and (max-width: 767px) { @content; }
   }
+  @else if $media == tablets {
+    @media only screen and (min-width: 768px) and (max-width: 959px) { @content; }
+  }
   @else if $media == others {
-    @media only screen and (min-width: 768px) { @content; }
+    @media only screen and (min-width: 960px) { @content; }
   }
 }
 
-@mixin gutters {
-  @include respond-to(handhelds) { padding: 0 $grid * 2; }
-  @include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
+@mixin push($how-far) {
+    padding-right: $how-far;
+    padding-left: $how-far;
 }
 
-@mixin controls {
-  ol {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-  }
+@mixin pull($how-far) {
+    margin-right: -$how-far;
+    margin-left: -$how-far;
+}
 
-  li:not(:first-child)::before {
-    content: ", ";
-  }
-
-  li:last-child::before {
-    content: ", or ";
-  }
-
-  li:last-child::after {
-    content: ".";
-  }
+@mixin gutters($gutter-size) {
+  @include push($gutter-size);
+  @include pull($gutter-size);
 }
 
 @mixin visually-hidden {
