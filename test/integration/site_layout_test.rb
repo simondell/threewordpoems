@@ -19,9 +19,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
     log_in_as reader
     get root_path
-    assert_select 'a[href=?]', poets_path
     assert_select 'a[href=?]', poet_path( reader )
-    assert_select 'a[href=?]', edit_poet_path( reader )
+    # assert_select 'a[href=?]', edit_poet_path( reader )
     assert_select 'a[href=?]', logout_path
   end
 

@@ -12,7 +12,8 @@ class PoemsInterfaceTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     get new_poem_path
-    assert_select 'input[type=text]', count: 2
+    assert_select 'textarea'
+    assert_select 'input[type=text]'
     assert_select 'input[type=file]'
 
     # invalid poem submission
