@@ -13,5 +13,12 @@ module Threewordpoems
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     require 'markdown_handler'
+
+    config.image_sizes = {
+      :handheld => 480,
+      :tablet => 960,
+      :desktop => 1920,
+    }
+
   end
 end

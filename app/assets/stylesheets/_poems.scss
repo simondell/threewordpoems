@@ -23,6 +23,7 @@ a[href*="poems"] {
  */
 article {
   box-sizing: border-box;
+  position: relative;
   @extend .poem-colours;
   @include respond-to(handhelds) { @include pull($grid); }
   @include respond-to(wide-handhelds) { @include pull($grid * 2); }

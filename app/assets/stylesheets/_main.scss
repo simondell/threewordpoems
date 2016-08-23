@@ -21,27 +21,19 @@ body {
 body {
   box-sizing: border-box;
 
-  @include respond-to(handhelds) { padding: 0 $grid * 2; }
-  @include respond-to(wide-handhelds) { padding: 0 $grid * 3; }
-  @include respond-to(tablets) { padding: 0 $grid * 4; }
-  @include respond-to(others) { padding: 0 $grid * 4; }
+  @include respond-to(handhelds) { @include push($grid) }
+  @include respond-to(wide-handhelds) { @include push($grid * 2) }
+  @include respond-to(tablets) { @include push($grid * 3) }
+  @include respond-to(others) { @include push($grid * 4) }
 }
 
 form, pre, ol, ul, dl {
   box-sizing: border-box;
 
-  @include respond-to(handhelds) {
-    @include gutters($grid);
-  }
-  @include respond-to(wide-handhelds) {
-    @include gutters($grid * 2);
-  }
-  @include respond-to(tablets) {
-    @include gutters($grid * 3);
-  }
-  @include respond-to(others) {
-    @include gutters($grid * 4);
-  }
+  @include respond-to(handhelds) { @include gutters($grid); }
+  @include respond-to(wide-handhelds) { @include gutters($grid * 2); }
+  @include respond-to(tablets) { @include gutters($grid * 3); }
+  @include respond-to(others) { @include gutters($grid * 4); }
 }
 
 h1 {

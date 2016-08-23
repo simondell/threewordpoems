@@ -1,13 +1,5 @@
 <article id="poem-<%= poem.id %>">
-  <% if poem.picture? %>
-  <img alt="" src="assets/oil_800w.jpg"
-    srcset="assets/oil_640w.jpg 640w,
-            assets/oil_800w.jpg 800w,
-            assets/oil_1200w.jpg 1200w,
-            assets/oil_1920w.jpg 1920w"
-    sizes="100%, (min-width=960) 960px" />
-  <% end %>
-
+  <%= responsive_picture poem if poem.picture? %>
   <div>
     <%= content_tag 'h1', poem.title unless poem.title.blank? %>
     <p><%= poem.content %></p>
