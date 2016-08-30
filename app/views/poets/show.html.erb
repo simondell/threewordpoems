@@ -1,14 +1,7 @@
 <%= provide( :page_title, @poet.name ) %>
-<p><%= gravatar_for @poet %> <%= @poet.name %>, <%= @poet.email %></p>
-<p>Created: <%= @poet.created_at %>; Modified: <%= @poet.updated_at %></p>
-<p>Now, it's <%= Time.now %></p>
 
-<% if @poet.poems.any? %>
-<section>
-	<h2>My Poems (<%= @poet.poems.count %>)</h2>
-	<ol>
-	<%= render collection: @poems, partial: 'poems/poem', layout: 'shared/list_item' %>
-	</ol>
-	<%= will_paginate @poems %>
-</section>
-<% end %>
+<address>
+<p><%= gravatar_for @poet %> <%= @poet.name %>, <%= @poet.email %></p>
+</address>
+
+<%= render @poem unless @poem.blank? %>

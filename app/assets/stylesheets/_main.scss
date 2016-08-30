@@ -64,13 +64,19 @@ nav {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
+    margin-bottom: 0;
   }
+
+  ol:last-child {
+    margin-bottom: $vertical-rhythm;
+  }
+
 
   li:not(:first-child)::before {
     content: ", ";
   }
 
-  li:last-child::before {
+  li:not(:only-child):last-child::before {
     content: ", or ";
   }
 

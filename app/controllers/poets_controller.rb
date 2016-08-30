@@ -36,7 +36,8 @@ class PoetsController < ApplicationController
 
   def show
     redirect_to root_url and return unless @poet.activated?
-    @poems = @poet.poems.lacigolonorhc.paginate page: params[:page]
+    # @poems = @poet.poems.lacigolonorhc.paginate page: params[:page]
+    @poem = @poet.poems.lacigolonorhc.first
   end
 
   def update
