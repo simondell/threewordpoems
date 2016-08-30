@@ -24,5 +24,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', logout_path
   end
 
+  test 'editor links' do
+    admin = poets :test_poet
+    admin.editor = true
+    log_in_as admin
+    get root_path
+    assert_select 'a[href=?]', admin_poems_path
+  end
 
 end

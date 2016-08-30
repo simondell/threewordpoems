@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814200840) do
+ActiveRecord::Schema.define(version: 20160824144935) do
 
   create_table "poems", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "poet_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "picture"
+    t.boolean  "publish",    default: false
     t.index ["poet_id", "created_at"], name: "index_poems_on_poet_id_and_created_at"
     t.index ["poet_id"], name: "index_poems_on_poet_id"
   end

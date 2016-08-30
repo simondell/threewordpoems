@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'poems/index'
+  end
+
+  namespace :admin do
+    get 'poems/update'
+  end
+
   root 'static_pages#home'
 
   # static pages
@@ -11,7 +19,6 @@ Rails.application.routes.draw do
   resources :poets
   get '/signup', to: 'poets#new'
   post '/signup', to: 'poets#create'
-
 
   # poems resource
   resources :poems, only: [:create, :destroy, :new, :show]
@@ -28,6 +35,11 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:create, :edit, :new, :update]
   get 'password_resets/new'
   get 'password_resets/edit'
+
+  # admin routes
+  namespace :admin do
+    resources :poems, only: [:index, :update]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
