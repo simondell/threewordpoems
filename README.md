@@ -18,11 +18,7 @@ The site is being re-worked to solve some issues:
 
 * rails 5
 * rails 5 requires min ruby v2.2.2 and the host is using v2.2.4
-* based on https://www.railstutorial.org/book/
-
-Configuration
-Services (job queues, cache servers, search engines, etc.)
-
+* imagemagick (for Carrierwave gem)
 
 
 
