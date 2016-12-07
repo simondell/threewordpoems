@@ -2,31 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.session-colours {
-  @include colourise($green, $blue);
-}
-
-.session-colours-highlight {
-  @include colourise($blue, $green);
-}
-
 /** link colours */
 a[href*="log"],
 a[href*="session"] {
-  @extend .session-colours;
+  color: $blue;
 
   &:hover,
   &:focus {
-    @extend .session-colours-highlight;
+    @include colourise(white, $blue);
   }
 }
 
 form[action*="log"],
 form[action*="session"] {
-  @extend .session-colours;
+  color: $blue;
 
   &::selection,
   ::selection {
-    @extend .session-colours-highlight;
+    @include colourise(white, $blue);
   }
 }
