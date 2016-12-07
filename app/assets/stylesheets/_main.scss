@@ -112,6 +112,18 @@ button {
   }
 }
 
+[type="button"],
+[type="submit"],
+button {
+  outline: none;
+}
+
+::placeholder {
+  color: currentColor;
+  opacity: 0.6;
+}
+
+
 textarea,
 input[type="text"],
 input[type="email"],

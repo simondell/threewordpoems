@@ -80,20 +80,9 @@ article {
 
 form[action*="poems"] {
   color: $red;
-
-  input, textarea, button,
-  ::placeholder {
-    color: $red;
-    border-color: currentColor;
-  }
-
-  ::placeholder {
-    opacity: 0.8;
-  }
 }
 
-article,
-form[action*="poems"] {
+article {
   &::selection,
   ::selection {
     @include colourise(white, $red);
