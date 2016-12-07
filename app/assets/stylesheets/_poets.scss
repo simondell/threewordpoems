@@ -1,20 +1,12 @@
-.poet-colours {
-  @include colourise($yellow, $green);
-}
-
-.poet-colours-highlight {
-  @include colourise($green, $yellow);
-}
-
 /** link colours */
 a[href*="sign"],
 a[href*="password"],
 a[href*="poet"] {
-  @extend .poet-colours;
+  color: $green;
 
   &:hover,
   &:focus {
-    @extend .poet-colours-highlight;
+    @include colourise(white, $green);
   }
 }
 
@@ -22,10 +14,10 @@ form[action*="sign"],
 form[action*="password"],
 form[action="poet"],
 address {
-  @extend .poet-colours;
+  color: $green;
 
   &::selection,
   ::selection {
-    @extend .poet-colours-highlight;
+    @include colourise(white, $green);
   }
 }
