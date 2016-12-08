@@ -1,6 +1,7 @@
 <% provide(:page_title, 'For the editors' ) %>
 
 <h2>New poems (<%= @unpublished.count %>)</h2>
+<%= will_paginate @unpublished %>
 <ol>
   <%= render partial: 'poem_item', collection: @unpublished, as: :poem %>
 </ol>

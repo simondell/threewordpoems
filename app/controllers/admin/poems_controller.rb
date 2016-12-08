@@ -2,10 +2,8 @@ class Admin::PoemsController < ApplicationController
   before_action :has_editor_rights, only: [:index, :update]
 
   def index
-    # @unpublished = Poem.unpublished.paginate page: params[:page]
-    @unpublished = Poem.unpublished
-byebug
-    # @published = Poem.published.all
+    @unpublished = Poem.unpublished.paginate page: params[:page], per_page: 8
+    # @published = Poem.published.paginate page: params[:page], per_page: 8
   end
 
   def update
