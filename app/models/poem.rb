@@ -3,8 +3,8 @@ class Poem < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   scope :lacigolonorhc, -> { order created_at: :desc }
-  scope :unpublished, -> { where published: false }
-  scope :published, -> { where published: true }
+  scope :unpublished, -> { where publish: false }
+  scope :published, -> { where publish: true }
 
   validates :content, presence: true
   validate :picture_size

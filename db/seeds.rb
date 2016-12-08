@@ -28,8 +28,12 @@ Poet.create!(
 end
 
 poets = Poet.order( :created_at ).take 6
-50.times do
-  title = Faker::Hipster.sentence
-  content = Faker::Hipster.words( 3 ).join ' '
-  poets.each {|poet| poet.poems.create title: title, content: content }
+10.times do |iteration|
+  poets.each {|poet|
+    poet.poems.create({
+      title: Faker::Hipster.sentence,
+      content: Faker::Hipster.words( 3 ).join(' '),
+      publish: iteration / 2 == 0 ? false : true
+    })
+  }
 end
