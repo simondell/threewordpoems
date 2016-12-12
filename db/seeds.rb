@@ -33,7 +33,7 @@ poets = Poet.order( :created_at ).take 6
     poet.poems.create({
       title: Faker::Hipster.sentence,
       content: Faker::Hipster.words( 3 ).join(' '),
-      publish: iteration / 2 == 0 ? false : true
+      moderated: iteration % 2 == 0 ? false : true
     })
   }
 end

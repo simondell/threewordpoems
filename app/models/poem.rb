@@ -5,6 +5,8 @@ class Poem < ApplicationRecord
   scope :lacigolonorhc, -> { order created_at: :desc }
   scope :unpublished, -> { where publish: false }
   scope :published, -> { where publish: true }
+  scope :unmoderated, -> { where moderated: false }
+  scope :moderated, -> { where moderated: true }
 
   validates :content, presence: true
   validate :picture_size
