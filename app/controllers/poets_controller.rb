@@ -5,7 +5,7 @@ class PoetsController < ApplicationController
   before_action :editor_privilege, only: :destroy
 
   def create
-    @poet = Poet.new user_params
+    @poet = Poet.new poet_params
     if @poet.save
       @poet.send_activation_email
       flash[:info] = 'Please check your email to activate your account.'
@@ -41,7 +41,7 @@ class PoetsController < ApplicationController
   end
 
   def update
-    if @poet.update_attributes user_params
+    if @poet.update_attributes poet_params
       flash[:success] = 'Profile updated'
       redirect_to @poet
     else
@@ -59,7 +59,7 @@ private
     redirect_to root_url unless current_poet.editor?
   end
 
-  def user_params
+  def poet_params
     required = params.require :poet
     required.permit [
       :name,
