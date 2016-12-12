@@ -15,6 +15,11 @@
         <li>Edit</li>
         <li><%= link_to 'Delete', poem, method: 'delete' %></li>
       </ul>
+      <% elsif current_poet.editor? %>
+      <ul>
+        <li><%= link_to 'publish', editorial_poem_path( poem, { publish: true } ), method: :patch %></li>
+        <li><%= link_to 'don\'t publish', editorial_poem_path( poem, { publish: false } ), method: :patch %></li>
+      </ul>
       <% end %>
     </footer>
   </div>
