@@ -1,9 +1,9 @@
-<% heading_level ||= nil %>
+<% heading_level ||= :h1 %>
 
 <article id="poem-<%= poem.id %>">
   <%= responsive_picture poem if poem.picture? %>
   <div>
-    <%= content_tag heading_level || :h1, poem.title unless poem.title.blank? %>
+    <%= content_tag heading_level, poem.title unless poem.title.blank? %>
     <p><%= poem.content %></p>
     <footer>
       <dl>
