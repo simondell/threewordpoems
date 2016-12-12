@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'poems/index'
-  end
-
-  namespace :admin do
-    get 'poems/update'
-  end
-
   root 'static_pages#home'
 
   # static pages
@@ -37,7 +29,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   # admin routes
-  namespace :admin do
+  namespace :editorial do
     resources :poems, only: [:index, :update]
   end
 
