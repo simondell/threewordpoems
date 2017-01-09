@@ -8,19 +8,23 @@
     <footer>
       <dl>
         <dt>By </dt><dd><address><%= poem.poet.name %></address>,</dd>
-        <dt>posted </dt><dd><%= time_ago_in_words(poem.created_at) %> ago</dd>
+        <dt>contributed on </dt><dd><%= time_ago_in_words(poem.created_at) %> ago</dd>
       </dl>
-      <% if @poet && current_poet?(@poet) %>
       <ul>
+        <% if current_poet?(poem.poet) %>
         <li>Edit</li>
         <li><%= link_to 'Delete', poem, method: 'delete' %></li>
+        <% end %>
+        <% if current_poet.editor? %>
+          <%= content_tag :li do
+            if poem.publish
+              link_to 'Don\'t publish', editorial_poem_path( poem, { publish: false } ), method: :patch
+            else
+              link_to 'Publish', editorial_poem_path( poem, { publish: true } ), method: :patch
+            end
+          end %>
+        <% end %>
       </ul>
-      <% elsif current_poet.editor? %>
-      <ul>
-        <li><%= link_to 'publish', editorial_poem_path( poem, { publish: true } ), method: :patch %></li>
-        <li><%= link_to 'don\'t publish', editorial_poem_path( poem, { publish: false } ), method: :patch %></li>
-      </ul>
-      <% end %>
     </footer>
   </div>
 </article>
